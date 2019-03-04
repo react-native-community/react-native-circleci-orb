@@ -1,0 +1,17 @@
+steps:
+  - run:
+      name: Create cache checksum file
+      command: |
+        mkdir -p ~/.tmp/checksumfiles
+        find . -type f -name 'package.json' -not -path "*node_modules*" -exec cat {} + >> ~/.tmp/checksumfiles/package.json
+  - restore_cache:
+      key: |
+        yarn-cache-{{ arch }}-{{ checksum "~/.tmp/checksumfiles/package.json" }}-{{ checksum "yarn.lock" }}-{{ .Environment.CACHE_VERSION }}
+  - run:
+      name: Yarn Install
+      command: yarn install --non-interactive --cache-folder ~/.cache/yarn
+  - save_cache:
+      paths:
+        - ~/.cache/yarn
+      key: |
+        yarn-cache-{{ arch }}-{{ checksum "~/.tmp/checksumfiles/package.json" }}-{{ checksum "yarn.lock" }}-{{ .Environment.CACHE_VERSION }}

@@ -1,0 +1,10 @@
+parameters:
+  device:
+    type: string
+    default: "iPhone X"
+
+steps:
+  - run:
+      name: Start iOS simulator (background)
+      background: true
+      command: xcrun simctl boot "<<parameters.device>>" || true

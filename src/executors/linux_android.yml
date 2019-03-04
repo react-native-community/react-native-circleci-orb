@@ -1,0 +1,7 @@
+docker:
+  - image: reactnativecommunity/react-native-android
+resource_class: 'medium'
+environment:
+  - _JAVA_OPTIONS: '-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -Xmx2048m'
+  - GRADLE_OPTS: '-Dorg.gradle.daemon=false -Dorg.gradle.jvmargs="-XX:+HeapDumpOnOutOfMemoryError -Xmx2048m"'
+  - BUILD_THREADS: 2

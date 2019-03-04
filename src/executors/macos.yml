@@ -1,0 +1,3 @@
+macos:
+  xcode: '10.1.0'
+resource_class: 'medium'

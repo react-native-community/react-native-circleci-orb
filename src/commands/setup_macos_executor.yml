@@ -1,0 +1,34 @@
+steps:
+  - run:
+      name: Configure Environment Variables
+      command: |
+        echo 'export PATH="$PATH:/usr/local/opt/node@8/bin:~/.yarn/bin:~/project/node_modules/.bin:~/project/example/node_modules/.bin"' >> $BASH_ENV
+        echo 'export ANDROID_HOME="/usr/local/share/android-sdk"' >> $BASH_ENV
+        echo 'export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"' >> $BASH_ENV
+        echo 'export PATH="$ANDROID_SDK_ROOT/emulator:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH"' >> $BASH_ENV
+        echo 'export QEMU_AUDIO_DRV=none' >> $BASH_ENV
+        echo 'export JAVA_HOME=/Library/Java/Home' >> $BASH_ENV
+        source $BASH_ENV
+
+  - restore_cache:
+      key: |
+        brew-cache-{{ arch }}-{{ .Environment.CACHE_VERSION }}
+
+  - run:
+      name: Configure Detox Environment
+      command: |
+        HOMEBREW_NO_AUTO_UPDATE=1 brew tap wix/brew >/dev/null
+        HOMEBREW_NO_AUTO_UPDATE=1 brew tap homebrew/cask >/dev/null
+        HOMEBREW_NO_AUTO_UPDATE=1 brew install node@8 >/dev/null
+        HOMEBREW_NO_AUTO_UPDATE=1 brew install applesimutils >/dev/null
+        HOMEBREW_NO_AUTO_UPDATE=1 brew cask install android-sdk >/dev/null
+        HOMEBREW_NO_AUTO_UPDATE=1 brew cask install intel-haxm >/dev/null
+        touch .watchmanconfig
+        node -v
+
+  - save_cache:
+      paths:
+        - /usr/local/Homebrew
+        - ~/Library/Caches/Homebrew
+      key: |
+        brew-cache-{{ arch }}-{{ .Environment.CACHE_VERSION }}
