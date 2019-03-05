@@ -1,5 +1,8 @@
+description: Starts an iOS simulator with the given name.
+
 parameters:
   device:
+    description: The type of device you want to start.
     type: string
     default: "iPhone X"
 

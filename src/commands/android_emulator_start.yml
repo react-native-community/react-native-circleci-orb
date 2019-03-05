@@ -1,10 +1,22 @@
+description: Installs and starts an Android emulator with the given version and name.
+
 parameters:
+  device_name:
+    description: The name of the AVD. You use this name to tell which device to run tests on.
+    type: string
+    default: "TestingAVD"
   platform_version:
+    description: The version of android to run on the emulator. Usually in the form of "android-28".
     type: string
     default: "android-28"
   build_tools_version:
+    description: The version of the Android build tools to install.
     type: string
     default: "28.0.3"
+  logcat_grep:
+    description: ADB logs will be shown in the "Start Android Emulator" commands, but we filter it using grep to avoid noise. You can specify additional strigns to grep for. Make sure you escape special characters.
+    type: string
+    default: "com.reactnativecommunity"
 
 steps:
   - run:
@@ -29,13 +41,13 @@ steps:
 
   - run:
       name: Create Android Emulator
-      command: avdmanager create avd --force -n TestingAVD -k "system-images;<<parameters.platform_version>>;google_apis;x86" -g google_apis -d "Nexus 4"
+      command: avdmanager create avd --force -n <<parameters.device_name>> -k "system-images;<<parameters.platform_version>>;google_apis;x86" -g google_apis -d "Nexus 4"
 
   - run:
       name: Start Android Emulator in background
       command: |
-        /usr/local/share/android-sdk/emulator/emulator @TestingAVD -version
-        /usr/local/share/android-sdk/emulator/emulator @TestingAVD -skin 470x860 -cores 1 -gpu auto -accel on -memory 1024 -no-audio -no-snapshot -no-boot-anim -no-window -logcat *:W | grep -i 'ReactNative\|com.reactnativecommunity\|RNCNetInfo'
+        /usr/local/share/android-sdk/emulator/emulator @<<parameters.device_name>> -version
+        /usr/local/share/android-sdk/emulator/emulator @<<parameters.device_name>> -skin 470x860 -cores 1 -gpu auto -accel on -memory 1024 -no-audio -no-snapshot -no-boot-anim -no-window -logcat *:W | grep -i 'ReactNative\|<<parameters.logcat_grep>>'
       background: true
 
   - run:

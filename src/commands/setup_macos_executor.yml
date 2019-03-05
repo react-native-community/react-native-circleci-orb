@@ -1,3 +1,5 @@
+description: Installs the required packages to build and test Android and iOS applications on the MacOS executor. You need to run this before running any other command on those executors.
+
 steps:
   - run:
       name: Configure Environment Variables

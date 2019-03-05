@@ -1,12 +1,16 @@
+description: Install Javascript dependencies using Yarn. This command correctly configures the cache for any number of package.json and yarn.lock files.
+
 steps:
   - run:
       name: Create cache checksum file
       command: |
         mkdir -p ~/.tmp/checksumfiles
         find . -type f -name 'package.json' -not -path "*node_modules*" -exec cat {} + >> ~/.tmp/checksumfiles/package.json
+        find . -type f -name 'yarn.lock' -not -path "*node_modules*" -exec cat {} + >> ~/.tmp/checksumfiles/yarn.lock
   - restore_cache:
-      key: |
-        yarn-cache-{{ arch }}-{{ checksum "~/.tmp/checksumfiles/package.json" }}-{{ checksum "yarn.lock" }}-{{ .Environment.CACHE_VERSION }}
+      keys:
+        - yarn-cache-{{ arch }}-{{ checksum "~/.tmp/checksumfiles/package.json" }}-{{ checksum "~/.tmp/checksumfiles/yarn.lock" }}-{{ .Environment.CACHE_VERSION }}
+        - yarn-cache
   - run:
       name: Yarn Install
       command: yarn install --non-interactive --cache-folder ~/.cache/yarn
@@ -14,4 +18,4 @@ steps:
       paths:
         - ~/.cache/yarn
       key: |
-        yarn-cache-{{ arch }}-{{ checksum "~/.tmp/checksumfiles/package.json" }}-{{ checksum "yarn.lock" }}-{{ .Environment.CACHE_VERSION }}
+        yarn-cache-{{ arch }}-{{ checksum "~/.tmp/checksumfiles/package.json" }}-{{ checksum "~/.tmp/checksumfiles/yarn.lock" }}-{{ .Environment.CACHE_VERSION }}
