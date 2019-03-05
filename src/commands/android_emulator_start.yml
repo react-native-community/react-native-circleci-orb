@@ -44,7 +44,7 @@ steps:
       command: avdmanager create avd --force -n <<parameters.device_name>> -k "system-images;<<parameters.platform_version>>;google_apis;x86" -g google_apis -d "Nexus 4"
 
   - run:
-      name: Start Android Emulator in background
+      name: Start Android Emulator (background)
       command: |
         /usr/local/share/android-sdk/emulator/emulator @<<parameters.device_name>> -version
         /usr/local/share/android-sdk/emulator/emulator @<<parameters.device_name>> -skin 470x860 -cores 1 -gpu auto -accel on -memory 1024 -no-audio -no-snapshot -no-boot-anim -no-window -logcat *:W | grep -i 'ReactNative\|<<parameters.logcat_grep>>'
@@ -54,12 +54,12 @@ steps:
       name: Wait for AVD to be ready
       no_output_timeout: "5m"
       command: |
-        boot=""
+        export BOOT=""
         echo "Waiting for AVD to finish booting"
         export PATH=$(dirname $(dirname $(command -v android)))/platform-tools:$PATH
-        until [[ "$boot" =~ "1" ]]; do
+        until [[ "$BOOT" =~ "1" ]]; do
           sleep 5
-          boot=$(adb -e shell getprop sys.boot_completed 2>&1)
+          export BOOT=$(adb -e shell getprop sys.boot_completed 2>&1)
         done
         sleep 15
         adb shell settings put global window_animation_scale 0
