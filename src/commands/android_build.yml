@@ -58,7 +58,7 @@ steps:
       key: gradle-home-cache-{{ checksum "~/.tmp/checksumfiles/build.gradle" }}-{{ checksum "~/.tmp/checksumfiles/settings.gradle" }}
 
   - run:
-      name: Build Android Debug APK
+      name: Build Android APK
       command: "cd <<parameters.project_path>> && chmod +x gradlew && ./gradlew --build-cache --max-workers 2 --continue assemble<<parameters.build_type>> assembleAndroidTest -DtestBuildType=<<parameters.build_type>> --stacktrace"
 
   - run:
