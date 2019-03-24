@@ -21,18 +21,15 @@ steps:
   - restore_cache:
       keys:
         - gradle-wrapper-{{ arch }}-{{ checksum "<<parameters.project_path>>/gradle/wrapper/gradle-wrapper.properties" }}-{{ .Environment.CACHE_VERSION }}
-        - gradle-wrapper
 
   - restore_cache:
       keys:
         - gradle-home-cache-{{ arch }}-{{ checksum "~/.tmp/checksumfiles/build.gradle" }}-{{ checksum "~/.tmp/checksumfiles/settings.gradle" }}-{{ .Environment.CACHE_VERSION }}
-        - gradle-home-cache
 
   - restore_cache:
       name: Restoring Gradle Build caches
       keys:
         - gradle-build-cache-{{ .Revision }}
-        - gradle-build-cache
 
   - run:
       name: Dispersing Gradle Build caches for restoring

@@ -10,7 +10,6 @@ steps:
   - restore_cache:
       keys:
         - yarn-cache-{{ arch }}-{{ checksum "~/.tmp/checksumfiles/package.json" }}-{{ checksum "~/.tmp/checksumfiles/yarn.lock" }}-{{ .Environment.CACHE_VERSION }}
-        - yarn-cache
   - run:
       name: Yarn Install
       command: yarn install --non-interactive --cache-folder ~/.cache/yarn
