@@ -1,0 +1,33 @@
+version: 2.1
+
+orbs:
+  orb-tools: circleci/orb-tools@2
+
+workflows:
+  btd:
+    jobs:
+      - orb-tools/pack:
+          source-dir: src/
+          destination-orb-path: packed-orb.yml
+          workspace-path: packed-orb.yml
+          artifact-path: packed-orb.yml
+
+      - orb-tools/publish:
+          orb-path: packed-orb.yml
+          orb-ref: "react-native-community/react-native@dev:${CIRCLE_BRANCH}"
+          publish-token-variable: "$CIRCLECI_API_TOKEN"
+          attach-workspace: true
+          checkout: false
+          requires: [orb-tools/pack]
+
+      - orb-tools/increment:
+          orb-path: packed-orb.yml
+          orb-ref: "react-native-community/react-native"
+          segment: "patch"
+          publish-token-variable: "$CIRCLECI_API_TOKEN"
+          attach-workspace: true
+          checkout: false
+          requires: [orb-tools/pack]
+          filters:
+            branches:
+              only: master

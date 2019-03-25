@@ -1,3 +1,3 @@
 #!/bin/bash
 set -e
-circleci config pack src > config.yml
+circleci config pack src > packed-orb.yml
