@@ -1,0 +1,11 @@
+description: Builds the app with the given Detox configuration, as specified in package.json.
+
+parameters:
+  configuration:
+    description: The Detox configuration to build.
+    type: string
+
+steps:
+  - run:
+      name: Detox Build
+      command: detox build -c <<parameters.configuration>>

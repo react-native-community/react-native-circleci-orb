@@ -1,0 +1,11 @@
+description: Tests the app with the given Detox configuration, as specified in package.json.
+
+parameters:
+  configuration:
+    description: The Detox configuration to test.
+    type: string
+
+steps:
+  - run:
+      name: Detox Test
+      command: detox test -c <<parameters.configuration>>

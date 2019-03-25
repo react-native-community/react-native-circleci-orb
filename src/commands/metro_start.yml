@@ -1,0 +1,7 @@
+description: Starts the Metro packager.
+
+steps:
+  - run:
+      name: Start Metro Packager (Background)
+      background: true
+      command: react-native start
