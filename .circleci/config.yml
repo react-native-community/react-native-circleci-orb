@@ -1,33 +1,68 @@
 version: 2.1
 
 orbs:
+  cli: circleci/circleci-cli@0.1.2
   orb-tools: circleci/orb-tools@2
+
+jobs:
+  pack:
+    executor: cli/default
+    steps:
+      - checkout
+      - orb-tools/pack:
+          source: src/
+          destination: packed-orb.yml
+      - orb-tools/validate:
+          orb-path: packed-orb.yml
+      - store_artifacts:
+          path: packed-orb.yml
+      - persist_to_workspace:
+          root: .
+          paths: .
+  publish:
+    docker:
+      - image: circleci/node:8
+    environment:
+      - PATH: '/opt/yarn/yarn-v1.5.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    steps:
+      - attach_workspace:
+          at: .
+      - restore_cache:
+          key: yarn-cache-{{ arch }}-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}-{{ .Environment.CACHE_VERSION }}
+      - run:
+          name: Yarn Install
+          command: yarn install --non-interactive --cache-folder ~/.cache/yarn
+      - save_cache:
+          paths:
+            - ~/.cache/yarn
+          key: yarn-cache-{{ arch }}-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}-{{ .Environment.CACHE_VERSION }}
+      - run:
+          name: Add Github to known hosts
+          command: |
+            mkdir -p ~/.ssh
+            echo 'github.com ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==' >> ~/.ssh/known_hosts
+      - run:
+          name: Publish to NPM
+          command: yarn semantic-release
 
 workflows:
   btd:
     jobs:
-      - orb-tools/pack:
-          source-dir: src/
-          destination-orb-path: packed-orb.yml
-          workspace-path: packed-orb.yml
-          artifact-path: packed-orb.yml
+      - pack
 
       - orb-tools/publish:
           orb-path: packed-orb.yml
           orb-ref: "react-native-community/react-native@dev:${CIRCLE_BRANCH}"
-          publish-token-variable: "$CIRCLECI_API_TOKEN"
+          publish-token-variable: CIRCLECI_API_TOKEN
           attach-workspace: true
           checkout: false
-          requires: [orb-tools/pack]
+          requires: [pack]
+          filters:
+            branches:
+              ignore: master
 
-      - orb-tools/increment:
-          orb-path: packed-orb.yml
-          orb-ref: "react-native-community/react-native"
-          segment: "patch"
-          publish-token-variable: "$CIRCLECI_API_TOKEN"
-          attach-workspace: true
-          checkout: false
-          requires: [orb-tools/pack]
+      - publish:
+          requires: [pack]
           filters:
             branches:
               only: master

@@ -4,11 +4,17 @@
   "private": true,
   "description": "A CircleCI Orb which can be used to simplify building and testing React Native apps.",
   "scripts": {
-    "pack": "./scripts/pack.sh"
+    "pack": "./scripts/pack.sh",
+    "semantic-release": "semantic-release"
+  },
+  "devDependencies": {
+    "@semantic-release/git": "^7.0.8",
+    "semantic-release": "^15.13.3",
+    "semantic-release-circleci-orb": "^1.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/react-native-community/react-native-circleci-orb.git"
+    "url": "https://github.com/react-native-community/react-native-circleci-orb.git"
   },
   "author": "Matt Oakes <hello@mattoakes.net>",
   "license": "MIT",
