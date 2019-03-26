@@ -1,0 +1,62 @@
+description: Builds the Android app at the given path with the given build types.
+
+executor: linux_android
+
+parameters:
+  # For this job
+  checkout:
+    description: Boolean for whether or not to checkout as a first step. Default is false.
+    type: boolean
+    default: false
+  attach_workspace:
+    description: Boolean for whether or not to attach to an existing workspace. Default is true.
+    type: boolean
+    default: true
+  workspace_root:
+    description: Workspace root path that is either an absolute path or a path relative to the working directory. Defaults to '.' (the working directory).
+    type: string
+    default: .
+  persist_to_workspace:
+    description: Should this job persist files to a workspace? Defaults to true
+    type: boolean
+    default: true
+  store_artifacts:
+    description: Store this job store files as job artifacts? Defaults to true
+    type: boolean
+    default: true
+  # For the build command
+  project_path:
+    description: The path to the root of the Android project you want to build, relative to the root of the repository.
+    type: string
+    default: "./android"
+  build_type:
+    description: The build type to build. This is normally either "debug" or "release" but you may have custom build types configured for your app.
+    type: string
+    default: "debug"
+
+steps:
+  - when:
+      condition: <<parameters.checkout>>
+      steps:
+        - checkout
+  - when:
+      condition: <<parameters.attach_workspace>>
+      steps:
+        - attach_workspace:
+            at: <<parameters.workspace_root>>
+  - yarn_install
+  - android_build:
+      project_path: <<parameters.project_path>>
+      build_type: <<parameters.build_type>>
+  - when:
+      condition: <<parameters.persist_to_workspace>>
+      steps:
+        - persist_to_workspace:
+            root: .
+            paths:
+              - <<parameters.project_path>>/app/build/outputs/apk
+  - when:
+      condition: <<parameters.store_artifacts>>
+      steps:
+        - store_artifacts:
+            path: <<parameters.project_path>>/app/build/outputs/apk

@@ -1,0 +1,43 @@
+description: Builds the iOS app at the given path with the given build scheme and configuration. This should be run only after installing NPM dependencies.
+
+parameters:
+  project_type:
+    description: If the iOS app is built using a project file (*.xcodeproj) or a workspace.
+    type: enum
+    enum: ["project", "workspace"]
+    default: "project"
+  project_path:
+    description: The path to the Xcode project (*.xcodeproj) or the Xcode workspace (*.xcworkspace) that you want to build, relative to the root of the repository.
+    type: string
+  build_configuration:
+    description: The build configuration to use. This is normally either "Debug" or "Release" but you may have custom build configuration configured for your app.
+    type: string
+    default: "Debug"
+  derived_data_path:
+    description: The path to the directory to place the derived data, relative to the root of the repository.
+    type: string
+    default: "ios/build"
+  device:
+    description: The type of device you want to build for.
+    type: string
+    default: "iPhone X"
+  scheme:
+    description: The scheme to use.
+    type: string
+
+steps:
+  - restore_cache:
+      name: Restoring iOS Build caches
+      keys:
+        - ios-build-cache-{{ arch }}-{{ checksum "~/.tmp/checksumfiles/package.json" }}-{{ .Environment.CACHE_VERSION }}
+
+  - run:
+      name: Build iOS App
+      command: "export RCT_NO_LAUNCH_PACKAGER=true && xcodebuild -<<parameters.project_type>> <<parameters.project_path>> -destination 'platform=iOS Simulator,name=<<parameters.device>>' -scheme <<parameters.scheme>> -parallelizeTargets -configuration <<parameters.build_configuration>> -derivedDataPath <<parameters.derived_data_path>>  -UseModernBuildSystem=YES | xcpretty -k"
+
+  - save_cache:
+      name: Saving iOS Build Cache
+      paths:
+        - <<parameters.derived_data_path>>/Build
+      key: ios-build-cache-{{ arch }}-{{ checksum "~/.tmp/checksumfiles/package.json" }}-{{ .Environment.CACHE_VERSION }}
+      when: always

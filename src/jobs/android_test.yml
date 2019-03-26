@@ -1,0 +1,45 @@
+description: Tests the Android app on the given device, with the given Detox configuration. You should have already built the correct Android APK (including the androidTest APK) and have both persisted to the worksapce.
+
+executor: macos
+
+parameters:
+  # For this job
+  workspace_root:
+    description: Workspace root path that is either an absolute path or a path relative to the working directory. Defaults to '.' (the working directory).
+    type: string
+    default: .
+  # For the start emulator command
+  device_name:
+    description: The name of the AVD. You use this name to tell which device to run tests on. Defaults to 'TestingAVD'.
+    type: string
+    default: "TestingAVD"
+  platform_version:
+    description: The version of android to run on the emulator. Defaults to 'android-28'.
+    type: string
+    default: "android-28"
+  build_tools_version:
+    description: The version of the Android build tools to install. Defaults to '28.0.3'.
+    type: string
+    default: "28.0.3"
+  logcat_grep:
+    description: ADB logs will be shown in the "Start Android Emulator" commands, but we filter it using grep to avoid noise. You can specify additional strigns to grep for. Make sure you escape special characters. Defaults to 'com.reactnativecommunity'.
+    type: string
+    default: "com.reactnativecommunity"
+  # For the detox command
+  detox_configuration:
+    description: The Detox configuration to test. Defaults to 'android.emu.release'.
+    type: string
+    default: "android.emu.release"
+
+steps:
+  - attach_workspace:
+      at: <<parameters.workspace_root>>
+  - setup_macos_executor
+  - yarn_install
+  - android_emulator_start:
+      device_name: <<parameters.device_name>>
+      platform_version: <<parameters.platform_version>>
+      build_tools_version: <<parameters.build_tools_version>>
+      logcat_grep: <<parameters.logcat_grep>>
+  - detox_test:
+      configuration: <<parameters.detox_configuration>>
