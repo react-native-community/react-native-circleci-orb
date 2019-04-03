@@ -4,8 +4,13 @@ parameters:
   configuration:
     description: The Detox configuration to test.
     type: string
+  loglevel:
+    description: The Detox logging level to use. Must be one of "fatal", "error", "warn", "info", "verbose", or "trace".
+    type: enum
+    enum: ["fatal", "error", "warn", "info", "verbose", "trace"]
+    default: warn
 
 steps:
   - run:
       name: Detox Test
-      command: detox test -c <<parameters.configuration>>
+      command: detox test -c <<parameters.configuration>> -l <<parameters.loglevel>> --headless

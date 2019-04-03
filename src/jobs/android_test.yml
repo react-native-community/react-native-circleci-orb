@@ -30,6 +30,11 @@ parameters:
     description: The Detox configuration to test. Defaults to 'android.emu.release'.
     type: string
     default: "android.emu.release"
+  detox_loglevel:
+    description: The Detox logging level to use. Must be one of "fatal", "error", "warn", "info", "verbose", or "trace".
+    type: enum
+    enum: ["fatal", "error", "warn", "info", "verbose", "trace"]
+    default: warn
 
 steps:
   - attach_workspace:
@@ -43,3 +48,4 @@ steps:
       logcat_grep: <<parameters.logcat_grep>>
   - detox_test:
       configuration: <<parameters.detox_configuration>>
+      loglevel: <<parameters.detox_loglevel>>

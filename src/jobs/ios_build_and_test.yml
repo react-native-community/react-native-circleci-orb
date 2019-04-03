@@ -45,6 +45,11 @@ parameters:
     description: The Detox configuration to test.
     type: string
     default: "ios.sim.release"
+  detox_loglevel:
+    description: The Detox logging level to use. Must be one of "fatal", "error", "warn", "info", "verbose", or "trace".
+    type: enum
+    enum: ["fatal", "error", "warn", "info", "verbose", "trace"]
+    default: warn
 
 steps:
   - when:
@@ -68,3 +73,4 @@ steps:
       scheme: <<parameters.scheme>>
   - detox_test:
       configuration: <<parameters.detox_configuration>>
+      loglevel: <<parameters.detox_loglevel>>
