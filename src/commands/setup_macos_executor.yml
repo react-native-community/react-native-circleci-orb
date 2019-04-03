@@ -40,7 +40,6 @@ steps:
         ./build.sh fbsimctl build >/dev/null
         cp -r build/Build/Products/Debug/* /usr/local/bin
         which fbsimctl
-        fbsimctl
 
   - save_cache:
       paths:
