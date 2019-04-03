@@ -28,6 +28,20 @@ steps:
         touch .watchmanconfig
         node -v
 
+  # Ideally we would do this using Homebrew above, but we need a specific revision due to this issue:
+  # https://github.com/facebook/FBSimulatorControl/pull/508
+  - run:
+      name: Install FBSimulatorControl
+      command: |
+        cd /tmp
+        git clone https://github.com/facebook/FBSimulatorControl.git FBSimulatorControl
+        cd FBSimulatorControl
+        git checkout 778f9825cb82aabac82f1ed474f1dba1e0276211
+        ./build.sh fbsimctl build >/dev/null
+        cp -r build/Build/Products/Debug/* /usr/local/bin
+        which fbsimctl
+        fbsimctl
+
   - save_cache:
       paths:
         - /usr/local/Homebrew
