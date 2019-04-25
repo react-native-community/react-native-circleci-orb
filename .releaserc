@@ -5,7 +5,7 @@
     [
       "semantic-release-circleci-orb",
       {
-        "orbName": "react-native-community/circleci-orb",
+        "orbName": "react-native-community/react-native",
         "orbPath": "packed-orb.yml"
       }
     ],
