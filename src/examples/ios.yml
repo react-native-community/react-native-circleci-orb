@@ -1,0 +1,75 @@
+description: 'An example of how to build, test, and release the iOS app'
+usage:
+  # Orb support is from version >= 2.1
+  version: 2.1
+
+  # Make sure you use the latest version of the Orb
+  orbs:
+    rn: react-native-community/react-native@1.0.0
+
+  # Custom jobs which are not part of the Orb
+  jobs:
+    # A job to checkout and persist the code to the workspace
+    checkout_code:
+      executor: rn/linux_js
+      steps:
+        - checkout
+        - persist_to_workspace:
+            root: .
+            paths: .
+    # A job to test the JavaScript part of the app
+    analyse_js:
+      executor: rn/linux_js
+      steps:
+        - attach_workspace:
+            at: .
+        - rn/yarn_install
+        - run:
+            name: Run ESLint
+            command: yarn eslint
+        - run:
+            name: Flow
+            command: yarn flow
+        - run:
+            name: Jest
+            command: yarn jest
+    # A job to release the app through Fastlane
+    fastlane_release:
+      executor: rn/linux_js
+      steps:
+        - attach_workspace:
+            at: .
+        - rn/yarn_install
+        - run:
+            name: Run Fastlane
+            # Your Fastlane command goes here
+            command: bundle exec fastlane ios release
+
+  workflows:
+    test:
+      jobs:
+        # Checkout the code and persist to the Workspace
+        # Note: This is a job which is defined above and not part of the Orb
+        - checkout_code
+
+        # Analyze the Javascript using ESLint, Flow, and Jest
+        # Note: This is a job which is defined above and not part of the Orb
+        - analyse_js:
+            requires:
+              - checkout_code
+
+        # Build and test the iOS app in release mode
+        - rn/ios_build_and_test:
+            project_path: "ios/Example.xcodeproj"
+            device: "iPhone X"
+            build_configuration: "Release"
+            scheme: "Example"
+            detox_configuration: "ios.sim.release"
+            requires:
+              - analyse_js
+
+        # Release the app using our Fastlane job
+        # Note: This is a job which is defined above and not part of the Orb
+        - fastlane_release:
+            requires:
+              - rn/ios_build_and_test
