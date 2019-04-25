@@ -1,3 +1,12 @@
+parameters:
+  xcode_version:
+    description: The version of Xcode to use. See here for the list of supported versions https://circleci.com/docs/2.0/testing-ios/#supported-xcode-versions
+    type: string
+    default: '10.1.0'
+  resource_class:
+    description: Changes the resource class of the executor. Requires a support request to enable the resource_class parameter. See https://circleci.com/docs/2.0/configuration-reference/#resource_class
+    type: string
+    default: medium
 macos:
-  xcode: '10.1.0'
-resource_class: 'medium'
+  xcode: <<parameters.xcode_version>>
+resource_class: <<parameters.resource_class>>
