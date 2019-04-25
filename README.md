@@ -1,8 +1,6 @@
 # React Native CircleCI Orb
 A [CircleCI Orb](https://circleci.com/orbs/) which can be used to simplify building and testing React Native apps.
 
-***Note:** This Orb has not yet been officially published to the registry. Until that happens, only repositories inside the `react-native-community` Github organisation can use it.*
-
 ## Why?
 Setting up CircleCI to test your React Native app correctly is hard. You need to consider using the correct machine type, installing the correct dependencies, running the correct commands, and correctly setting up caching to speed up builds. All of this is complicated and involves a lot of trial and error.
 
@@ -32,9 +30,9 @@ Here is a full example of how the Orb can be used in a CircleCI workflow to buil
 # Orb support is from version >= 2.1
 version: 2.1
 
-# Make sure you use the latest version of the Orb
+# Make sure you use the latest version of the Orb!
 orbs:
-  rn: react-native-community/react-native@dev:0.2.0
+  rn: react-native-community/react-native@1.0.0
 
 # Custom jobs which are not part of the Orb
 jobs:
