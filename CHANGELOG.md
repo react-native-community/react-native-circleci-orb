@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/react-native-community/react-native-circleci-orb/compare/v1.1.1...v1.1.2) (2019-05-14)
+
+
+### Bug Fixes
+
+* Correct the Android java environment variables ([917129a](https://github.com/react-native-community/react-native-circleci-orb/commit/917129a))
+
 ## [1.1.1](https://github.com/react-native-community/react-native-circleci-orb/compare/v1.1.0...v1.1.1) (2019-05-14)
 
 
