@@ -8,6 +8,10 @@ parameters:
     description: Workspace root path that is either an absolute path or a path relative to the working directory. Defaults to '.' (the working directory).
     type: string
     default: .
+  start_metro:
+    description: If we should start the Metro packager in the background for this job.
+    type: boolean
+    default: false
   # For the start emulator command
   device_name:
     description: The name of the AVD. You use this name to tell which device to run tests on. Defaults to 'TestingAVD'.
@@ -41,6 +45,10 @@ steps:
       at: <<parameters.workspace_root>>
   - setup_macos_executor
   - yarn_install
+  - when:
+      condition: <<parameters.start_metro>>
+      steps:
+        - metro_start
   - android_emulator_start:
       device_name: <<parameters.device_name>>
       platform_version: <<parameters.platform_version>>

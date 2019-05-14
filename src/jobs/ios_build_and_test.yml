@@ -16,6 +16,10 @@ parameters:
     description: Workspace root path that is either an absolute path or a path relative to the working directory. Defaults to '.' (the working directory).
     type: string
     default: .
+  start_metro:
+    description: If we should start the Metro packager in the background for this job.
+    type: boolean
+    default: false
   # For the iOS build command
   project_type:
     description: If the iOS app is built using a project file (*.xcodeproj) or a workspace.
@@ -65,6 +69,10 @@ steps:
   - ios_simulator_start:
         device: <<parameters.device>>
   - yarn_install
+  - when:
+      condition: <<parameters.start_metro>>
+      steps:
+        - metro_start
   - ios_build:
       project_path: <<parameters.project_path>>
       derived_data_path: <<parameters.derived_data_path>>
