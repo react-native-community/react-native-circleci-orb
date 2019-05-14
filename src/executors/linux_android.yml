@@ -2,11 +2,11 @@ parameters:
   java_options:
     description: Java command options. Note that setting this will override the default options so you might need to supply those as well.
     type: string
-    default: '-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -Xms1048m -Xmx2048m'
+    default: '-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -Xms1048m -Xmx3048m'
   gradle_options:
     description: Gradle command options. Note that setting this will override the default options so you might need to supply those as well.
     type: string
-    default: '-Dorg.gradle.daemon=false -Dorg.gradle.jvmargs="-XX:+HeapDumpOnOutOfMemoryError -Xmx2048m"'
+    default: '-Dorg.gradle.daemon=false -Dorg.gradle.jvmargs="-XX:+HeapDumpOnOutOfMemoryError -Xmx3048m"'
   build_threads:
     description: The number of build threads to use.
     type: integer
