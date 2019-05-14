@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v1.1.2...v1.2.0) (2019-05-14)
+
+
+### Features
+
+* Allow the metro packager to be started from the test jobs ([68846df](https://github.com/react-native-community/react-native-circleci-orb/commit/68846df))
+
 ## [1.1.2](https://github.com/react-native-community/react-native-circleci-orb/compare/v1.1.1...v1.1.2) (2019-05-14)
 
 
