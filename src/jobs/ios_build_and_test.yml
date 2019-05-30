@@ -79,6 +79,7 @@ steps:
       device: <<parameters.device>>
       build_configuration: <<parameters.build_configuration>>
       scheme: <<parameters.scheme>>
+      project_type: <<parameters.project_type>>
   - detox_test:
       configuration: <<parameters.detox_configuration>>
       loglevel: <<parameters.detox_loglevel>>
