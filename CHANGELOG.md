@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/react-native-community/react-native-circleci-orb/compare/v1.2.0...v1.2.1) (2019-06-03)
+
+
+### Bug Fixes
+
+* Use project_type in ios_build_and_test job ([25c7948](https://github.com/react-native-community/react-native-circleci-orb/commit/25c7948))
+
 # [1.2.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v1.1.2...v1.2.0) (2019-05-14)
 
 
