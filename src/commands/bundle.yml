@@ -1,0 +1,7 @@
+description: Bundles all JS files.
+
+steps:
+  - run:
+      name: JS Bundle iOS
+      background: true
+      command: react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ios/main.jsbundle --assets-dest ios
