@@ -1,0 +1,25 @@
+description: Bundles all JS files.
+
+parameters:
+  platform:
+    description: The platform to build for. Usually one of "ios" or "android".
+    type: string
+  bundle_output:
+    description: The location to output the bundle to.
+    type: string
+  asset_dest:
+    description: The location to output assets to.
+    type: string
+  entry_file:
+    description: The entry file for the bundle. Defaults to "index.js".
+    type: string
+    default: "index.js"
+  dev:
+    description: If we should bundle in dev mode. Defaults to "false"
+    type: boolean
+    default: false
+
+steps:
+  - run:
+      name: Bundle React Native JS
+      command: react-native bundle --platform <<parameters.platform>> --bundle-output <<parameters.bundle_output>> --assets-dest <<parameters.asset_dest>> --entry-file <<parameters.entry_file>> --dev <<parameters.dev>>
