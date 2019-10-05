@@ -109,4 +109,4 @@ This is what the final workflow will look like:
 ![Example React Native CircleCI Orb Workflow](.github/example_workflow.png)
 
 ## License
-The Orb is released under the MIT license. For more information see [`LICENSE`](https://github.com/react-native-community/react-native-circleci-orb/LICENSE).
+The Orb is released under the MIT license. For more information see [`LICENSE`](https://github.com/react-native-community/react-native-circleci-orb/blob/master/LICENSE).
