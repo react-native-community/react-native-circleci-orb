@@ -104,7 +104,7 @@ workflows:
             - analyse_js
 ```
 
-This is what the final workflow will look like:
+Final workflow :
 
 ![Example React Native CircleCI Orb Workflow](.github/example_workflow.png)
 
