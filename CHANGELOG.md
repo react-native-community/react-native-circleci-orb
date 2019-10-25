@@ -1,3 +1,11 @@
+## [1.2.2](https://github.com/react-native-community/react-native-circleci-orb/compare/v1.2.1...v1.2.2) (2019-10-25)
+
+
+### Bug Fixes
+
+* remove haxm the lack hardware acceleration support causes a crash ([9d0bb42](https://github.com/react-native-community/react-native-circleci-orb/commit/9d0bb42))
+* remove haxm the lack hardware acceleration support causes a crash ([38ef88e](https://github.com/react-native-community/react-native-circleci-orb/commit/38ef88e)), closes [#3](https://github.com/react-native-community/react-native-circleci-orb/issues/3)
+
 ## [1.2.1](https://github.com/react-native-community/react-native-circleci-orb/compare/v1.2.0...v1.2.1) (2019-06-03)
 
 
