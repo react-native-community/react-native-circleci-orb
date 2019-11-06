@@ -49,13 +49,13 @@ steps:
       name: Saving Gradle wrapper cache
       paths:
         - ~/.gradle/wrapper/
-      key: gradle-wrapper-{{ checksum "<<parameters.project_path>>/gradle/wrapper/gradle-wrapper.properties" }}
+      key: gradle-wrapper-{{ arch }}-{{ checksum "<<parameters.project_path>>/gradle/wrapper/gradle-wrapper.properties" }}-{{ .Environment.CACHE_VERSION }}
 
   - save_cache:
       name: Saving Gradle home cache
       paths:
         - ~/.gradle/caches/
-      key: gradle-home-cache-{{ checksum "~/.tmp/checksumfiles/build.gradle" }}-{{ checksum "~/.tmp/checksumfiles/settings.gradle" }}
+      key: gradle-home-cache-{{ arch }}-{{ checksum "~/.tmp/checksumfiles/build.gradle" }}-{{ checksum "~/.tmp/checksumfiles/settings.gradle" }}-{{ .Environment.CACHE_VERSION }}
 
   - run:
       name: Build Android APK
