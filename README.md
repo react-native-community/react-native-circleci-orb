@@ -23,7 +23,27 @@ You will also need to ensure that you have a MacOS plan enabled if you want to b
 ## Documentation
 [You can read the full documentation here](https://circleci.com/orbs/registry/orb/react-native-community/react-native).
 
+## Android
+
+Add this task in your <example>/app/build.gradle
+
+```gradle
+task downloadDependencies() {
+  description 'Download all dependencies to the Gradle cache'
+  doLast {
+    configurations.findAll().each { config ->
+      if (config.name.contains("minReactNative") && config.canBeResolved) {
+        print config.name
+        print '\n'
+        config.files
+      }
+    }
+  }
+}
+```
+
 ## Example
+
 Here is a full example of how the Orb can be used in a CircleCI workflow to build and test a React Native app:
 
 ```yaml
