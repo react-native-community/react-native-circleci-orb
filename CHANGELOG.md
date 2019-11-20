@@ -1,3 +1,19 @@
+# [1.3.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v1.2.1...v1.3.0) (2019-11-20)
+
+
+### Bug Fixes
+
+* **android:** Update gradle cache keys to match on save and restore ([#17](https://github.com/react-native-community/react-native-circleci-orb/issues/17)) ([6e52052](https://github.com/react-native-community/react-native-circleci-orb/commit/6e52052))
+* **docs:** include the code repo link in the orb description ([6d97ca9](https://github.com/react-native-community/react-native-circleci-orb/commit/6d97ca9))
+* Remove FBSimulatorControl ([#24](https://github.com/react-native-community/react-native-circleci-orb/issues/24) by [@compojoom](https://github.com/compojoom)) ([7c5b51a](https://github.com/react-native-community/react-native-circleci-orb/commit/7c5b51a))
+* remove haxm the lack hardware acceleration support causes a crash ([9d0bb42](https://github.com/react-native-community/react-native-circleci-orb/commit/9d0bb42))
+* remove haxm the lack hardware acceleration support causes a crash ([38ef88e](https://github.com/react-native-community/react-native-circleci-orb/commit/38ef88e)), closes [#3](https://github.com/react-native-community/react-native-circleci-orb/issues/3)
+
+
+### Features
+
+* Minor release ([5f401d7](https://github.com/react-native-community/react-native-circleci-orb/commit/5f401d7))
+
 ## [1.2.2](https://github.com/react-native-community/react-native-circleci-orb/compare/v1.2.1...v1.2.2) (2019-10-25)
 
 
