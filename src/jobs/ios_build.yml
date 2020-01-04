@@ -44,6 +44,10 @@ parameters:
   scheme:
     description: The scheme to use.
     type: string
+  on_after_initialize:
+    description: A custom command to run right after yarn install.
+    type: string
+    default: ""
 
 steps:
   - when:
@@ -57,6 +61,12 @@ steps:
             at: <<parameters.workspace_root>>
   - setup_macos_executor
   - yarn_install
+  - when:
+      condition: <<parameters.on_after_initialize>>
+      steps:
+        - run:
+            name: "on_after_initialize_command by user"
+            command: <<parameters.on_after_initialize_command>>
   - when:
       condition: <<parameters.start_metro>>
       steps:

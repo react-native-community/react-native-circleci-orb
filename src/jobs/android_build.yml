@@ -34,13 +34,9 @@ parameters:
     type: string
     default: "debug"
   on_after_initialize:
-    description: Set this to true if you want to run a custom shell command right after yarn install. Provide the command in on_after_initialize_command
-    type: boolean
-    default: false
-  on_after_initialize_command:
-    description:
-    type: boolean
-    default: echo "Override this by specifiying your own command in on_after_initialize_command"
+    description: A custom command to run right after yarn install.
+    type: string
+    default: ""
 
 steps:
   - when:
@@ -52,13 +48,13 @@ steps:
       steps:
         - attach_workspace:
             at: <<parameters.workspace_root>>
+  - yarn_install
   - when:
       condition: <<parameters.on_after_initialize>>
       steps:
         - run:
-            name: "on_after_initialize_command by user"
-            command: <<parameters.on_after_initialize_command>>
-  - yarn_install
+            name: "on_after_initialize"
+            command: <<parameters.on_after_initialize>>
   - android_build:
       project_path: <<parameters.project_path>>
       build_type: <<parameters.build_type>>
