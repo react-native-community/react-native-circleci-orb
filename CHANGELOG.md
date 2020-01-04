@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v1.5.0...v2.0.0) (2020-01-04)
+
+
+### Features
+
+* Added the `--frozen-lockfile` flag to the `yarn_install` command ([e4676c4](https://github.com/react-native-community/react-native-circleci-orb/commit/e4676c4)), closes [#28](https://github.com/react-native-community/react-native-circleci-orb/issues/28)
+
+
+### BREAKING CHANGES
+
+* The `yarn_install` command will now fail if there need to be changes made to your `yarn.lock` file. See [the Yarn documentation](https://yarnpkg.com/en/docs/cli/install#toc-yarn-install-frozen-lockfile) for details on this flag.
+
 # [1.5.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v1.4.0...v1.5.0) (2020-01-04)
 
 
