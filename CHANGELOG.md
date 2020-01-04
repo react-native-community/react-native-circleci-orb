@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v1.3.0...v1.4.0) (2020-01-04)
+
+
+### Features
+
+* **ios:** Added an `ios_build` job ([#30](https://github.com/react-native-community/react-native-circleci-orb/issues/30) by [@roni-castro](https://github.com/roni-castro)) ([b607782](https://github.com/react-native-community/react-native-circleci-orb/commit/b607782))
+
 # [1.3.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v1.2.1...v1.3.0) (2019-11-20)
 
 
