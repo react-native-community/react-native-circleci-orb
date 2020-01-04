@@ -33,6 +33,10 @@ parameters:
     description: The build type to build. This is normally either "debug" or "release" but you may have custom build types configured for your app.
     type: string
     default: "debug"
+  on_after_initialize:
+    description: A custom command to run right after yarn install.
+    type: string
+    default: ""
 
 steps:
   - when:
@@ -45,6 +49,12 @@ steps:
         - attach_workspace:
             at: <<parameters.workspace_root>>
   - yarn_install
+  - when:
+      condition: <<parameters.on_after_initialize>>
+      steps:
+        - run:
+            name: "on_after_initialize"
+            command: <<parameters.on_after_initialize>>
   - android_build:
       project_path: <<parameters.project_path>>
       build_type: <<parameters.build_type>>

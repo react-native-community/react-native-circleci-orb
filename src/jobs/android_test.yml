@@ -39,12 +39,26 @@ parameters:
     type: enum
     enum: ["fatal", "error", "warn", "info", "verbose", "trace"]
     default: warn
+  on_after_initialize:
+    description: Set this to true if you want to run a custom shell command right after yarn install. Provide the command in on_after_initialize_command
+    type: boolean
+    default: false
+  on_after_initialize:
+    description: A custom command to run right after yarn install.
+    type: string
+    default: ""
 
 steps:
   - attach_workspace:
       at: <<parameters.workspace_root>>
   - setup_macos_executor
   - yarn_install
+  - when:
+      condition: <<parameters.on_after_initialize>>
+      steps:
+        - run:
+            name: "on_after_initialize"
+            command: <<parameters.on_after_initialize>>
   - when:
       condition: <<parameters.start_metro>>
       steps:

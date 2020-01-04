@@ -54,6 +54,10 @@ parameters:
     type: enum
     enum: ["fatal", "error", "warn", "info", "verbose", "trace"]
     default: warn
+  on_after_initialize:
+    description: A custom command to run right after yarn install.
+    type: string
+    default: ""
 
 steps:
   - when:
@@ -69,6 +73,12 @@ steps:
   - ios_simulator_start:
         device: <<parameters.device>>
   - yarn_install
+  - when:
+      condition: <<parameters.on_after_initialize>>
+      steps:
+        - run:
+            name: "on_after_initialize_command by user"
+            command: <<parameters.on_after_initialize_command>>
   - when:
       condition: <<parameters.start_metro>>
       steps:
