@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/react-native-community/react-native-circleci-orb/compare/v2.0.0...v2.0.1) (2020-01-04)
+
+
+### Bug Fixes
+
+* Removed the unused `build_threads` parameter in the `linux_android` executor ([97720b9](https://github.com/react-native-community/react-native-circleci-orb/commit/97720b9)), closes [#19](https://github.com/react-native-community/react-native-circleci-orb/issues/19)
+
 # [2.0.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v1.5.0...v2.0.0) (2020-01-04)
 
 
