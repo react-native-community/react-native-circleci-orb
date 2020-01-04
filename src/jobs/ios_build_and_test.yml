@@ -77,8 +77,8 @@ steps:
       condition: <<parameters.on_after_initialize>>
       steps:
         - run:
-            name: "on_after_initialize_command by user"
-            command: <<parameters.on_after_initialize_command>>
+            name: "on_after_initialize"
+            command: <<parameters.on_after_initialize>>
   - when:
       condition: <<parameters.start_metro>>
       steps:
