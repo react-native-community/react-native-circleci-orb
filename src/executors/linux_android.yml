@@ -7,10 +7,6 @@ parameters:
     description: Gradle command options. Note that setting this will override the default options so you might need to supply those as well.
     type: string
     default: '-Dorg.gradle.daemon=false -Dorg.gradle.jvmargs="-XX:+UnlockExperimentalVMOptions -XX:+HeapDumpOnOutOfMemoryError"'
-  build_threads:
-    description: The number of build threads to use.
-    type: integer
-    default: 2
   resource_class:
     description: Changes the resource class of the executor. Requires a support request to enable the resource_class parameter. See https://circleci.com/docs/2.0/configuration-reference/#resource_class
     type: string
@@ -21,4 +17,3 @@ resource_class: <<parameters.resource_class>>
 environment:
   - _JAVA_OPTIONS: <<parameters.java_options>>
   - GRADLE_OPTS: <<parameters.gradle_options>>
-  - BUILD_THREADS: <<parameters.build_threads>>
