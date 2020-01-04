@@ -113,6 +113,17 @@ workflows:
           requires:
             - build_android_release
 
+
+      # Build the iOS app in release mode and do not run tests
+      - rn/ios_build:
+          name: build_ios_release
+          project_path: ios/Example.xcodeproj
+          device: "iPhone X"
+          build_configuration: Release
+          scheme: Example
+          requires:
+            - analyse_js
+
       # Build and test the iOS app in release mode
       - rn/ios_build_and_test:
           project_path: "ios/Example.xcodeproj"
