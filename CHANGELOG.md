@@ -1,3 +1,11 @@
+# [1.5.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v1.4.0...v1.5.0) (2020-01-04)
+
+
+### Features
+
+* Add `on_after_initialize` parameter to the jobs ([#26](https://github.com/react-native-community/react-native-circleci-orb/issues/26) by [@compojoom](https://github.com/compojoom)) ([0ff6621](https://github.com/react-native-community/react-native-circleci-orb/commit/0ff6621))
+* Add a `bundle` command ([#8](https://github.com/react-native-community/react-native-circleci-orb/issues/8) by [@sunilchalla](https://github.com/sunilchalla)) ([464d661](https://github.com/react-native-community/react-native-circleci-orb/commit/464d661))
+
 # [1.4.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v1.3.0...v1.4.0) (2020-01-04)
 
 
