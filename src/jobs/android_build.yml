@@ -29,8 +29,20 @@ parameters:
     description: The path to the root of the Android project you want to build, relative to the root of the repository.
     type: string
     default: "./android"
-  build_type:
-    description: The build type to build. This is normally either "debug" or "release" but you may have custom build types configured for your app.
+  max_workers:
+    description: The number of workers to use for a build
+    type: integer
+    default: 2
+  assemble_build_type:
+    description: The build variant to build. This is normally either "assembleDebug" or "assembleRelease" but you may have custom build variants that you can specify here.
+    type: string
+    default: "assembleDebug"
+  assemble_test_type:
+    description: The test build varinat to build. This is normally "assembleAndroidTest" but you may have custom build variantes that you can specify here.
+    type: string
+    default: "assembleAndroidTest"
+  test_build_type:
+    description: The test build type to build. This is normally "debug" or "release".
     type: string
     default: "debug"
   on_after_initialize:
@@ -57,7 +69,10 @@ steps:
             command: <<parameters.on_after_initialize>>
   - android_build:
       project_path: <<parameters.project_path>>
-      build_type: <<parameters.build_type>>
+      assemble_build_type: <<parameters.assemble_build_type>>
+      assemble_test_type: <<parameters.assemble_test_type>>
+      test_build_type: <<parameters.test_build_type>>
+      max_workers: <<parameters.max_workers>>
   - when:
       condition: <<parameters.persist_to_workspace>>
       steps:

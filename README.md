@@ -105,7 +105,10 @@ workflows:
       - rn/android_build:
           name: build_android_release
           project_path: "android"
-          build_type: release
+          assemble_build_type: assembleRelease
+          assemble_test_type: assembleAndroidTest
+          test_build_type: release
+          max_workers: 2
           requires:
             - analyse_js
       - rn/android_test:
