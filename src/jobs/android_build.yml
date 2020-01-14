@@ -38,7 +38,7 @@ parameters:
     type: string
     default: "assembleDebug"
   assemble_test_type:
-    description: The test build varinat to build. This is normally "assembleAndroidTest" but you may have custom build variantes that you can specify here.
+    description: The test build variant to build. This is normally "assembleAndroidTest" but you may have custom build variants that you can specify here.
     type: string
     default: "assembleAndroidTest"
   test_build_type:
