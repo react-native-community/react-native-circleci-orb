@@ -1,4 +1,7 @@
 # React Native CircleCI Orb
+
+[![CircleCI Orb][orb-version-badge]][orb-page]
+
 A [CircleCI Orb](https://circleci.com/orbs/) to simplify testing your React Native app.
 
 ## Why?
@@ -52,7 +55,7 @@ version: 2.1
 
 # Make sure you use the latest version of the Orb!
 orbs:
-  rn: react-native-community/react-native@1.0.0
+  rn: react-native-community/react-native@2.0.1
 
 # Custom jobs which are not part of the Orb
 jobs:
@@ -141,3 +144,6 @@ This is what the final workflow will look like:
 
 ## License
 The Orb is released under the MIT license. For more information see [`LICENSE`](https://github.com/react-native-community/react-native-circleci-orb/blob/master/LICENSE).
+
+[orb-version-badge]:https://img.shields.io/endpoint.svg?url=https://badges.circleci.io/orb/react-native-community/react-native&style=flat-square
+[orb-page]:https://circleci.com/orbs/registry/orb/react-native-community/react-native
