@@ -1,3 +1,15 @@
+# [3.0.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v2.0.1...v3.0.0) (2020-01-26)
+
+
+### Features
+
+* Use Node 10 by default ([#37](https://github.com/react-native-community/react-native-circleci-orb/issues/37) by [@roni-castro](https://github.com/roni-castro)) ([3e7efc6](https://github.com/react-native-community/react-native-circleci-orb/commit/3e7efc6))
+
+
+### BREAKING CHANGES
+
+* Node 10 is now the default version. The previous default of Node 8 is now end-of-life. Most users will have no issues with upgrading unless they use modules which rely on Node 8 behaviour. You can also now use the `node_version` parameter to set the Node version you require.
+
 ## [2.0.1](https://github.com/react-native-community/react-native-circleci-orb/compare/v2.0.0...v2.0.1) (2020-01-04)
 
 
