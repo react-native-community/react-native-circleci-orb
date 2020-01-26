@@ -48,6 +48,11 @@ parameters:
     description: A custom command to run right after yarn install.
     type: string
     default: ""
+  # For macos executor
+  node_version:
+    description: The version of Node to use. This can be either a major version ("8"), a major and minor ("8.4"), or a fully qualified version ("8.4.1").
+    type: string
+    default: '10'
 
 steps:
   - when:
@@ -59,7 +64,8 @@ steps:
       steps:
         - attach_workspace:
             at: <<parameters.workspace_root>>
-  - setup_macos_executor
+  - setup_macos_executor:
+        node_version: <<parameters.node_version>>
   - yarn_install
   - when:
       condition: <<parameters.on_after_initialize>>

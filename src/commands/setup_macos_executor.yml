@@ -1,10 +1,16 @@
 description: Installs the required packages to build and test Android and iOS applications on the MacOS executor. You need to run this before running any other command on those executors.
 
+parameters:
+  node_version:
+    description: The version of Node to use. This can be either a major version ("8"), a major and minor ("8.4"), or a fully qualified version ("8.4.1").
+    type: string
+    default: '10'
+
 steps:
   - run:
       name: Configure Environment Variables
       command: |
-        echo 'export PATH="$PATH:/usr/local/opt/node@8/bin:~/.yarn/bin:~/project/node_modules/.bin:~/project/example/node_modules/.bin"' >> $BASH_ENV
+        echo 'export PATH="$PATH:/usr/local/opt/node@<<parameters.node_version>>/bin:~/.yarn/bin:~/project/node_modules/.bin:~/project/example/node_modules/.bin"' >> $BASH_ENV
         echo 'export ANDROID_HOME="/usr/local/share/android-sdk"' >> $BASH_ENV
         echo 'export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"' >> $BASH_ENV
         echo 'export PATH="$ANDROID_SDK_ROOT/emulator:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH"' >> $BASH_ENV
@@ -21,7 +27,7 @@ steps:
       command: |
         HOMEBREW_NO_AUTO_UPDATE=1 brew tap wix/brew >/dev/null
         HOMEBREW_NO_AUTO_UPDATE=1 brew tap homebrew/cask >/dev/null
-        HOMEBREW_NO_AUTO_UPDATE=1 brew install node@8 >/dev/null
+        HOMEBREW_NO_AUTO_UPDATE=1 brew install node@<<parameters.node_version>> >/dev/null
         HOMEBREW_NO_AUTO_UPDATE=1 brew install applesimutils >/dev/null
         HOMEBREW_NO_AUTO_UPDATE=1 brew cask install android-sdk >/dev/null
         touch .watchmanconfig
