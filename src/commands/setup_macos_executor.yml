@@ -27,7 +27,9 @@ steps:
       command: |
         HOMEBREW_NO_AUTO_UPDATE=1 brew tap wix/brew >/dev/null
         HOMEBREW_NO_AUTO_UPDATE=1 brew tap homebrew/cask >/dev/null
+        HOMEBREW_NO_AUTO_UPDATE=1 brew unlink node >/dev/null
         HOMEBREW_NO_AUTO_UPDATE=1 brew install node@<<parameters.node_version>> >/dev/null
+        HOMEBREW_NO_AUTO_UPDATE=1 brew link --overwrite node@<<parameters.node_version>> --force >/dev/null
         HOMEBREW_NO_AUTO_UPDATE=1 brew install applesimutils >/dev/null
         HOMEBREW_NO_AUTO_UPDATE=1 brew cask install android-sdk >/dev/null
         touch .watchmanconfig
