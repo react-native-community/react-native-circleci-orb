@@ -22,12 +22,25 @@ steps:
       key: |
         brew-cache-{{ arch }}-{{ .Environment.CACHE_VERSION }}
 
+  - run: 
+      name: Install node@<<parameters.node_version>>
+      command: |
+          set +e         
+          touch $BASH_ENV    
+          curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.5/install.sh | bash
+          echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV
+          echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
+          echo nvm install <<parameters.node_version>> >> $BASH_ENV
+          echo nvm alias default <<parameters.node_version>> >> $BASH_ENV
+  - run:
+      name: Verify node version
+      command: node --version
+  
   - run:
       name: Configure Detox Environment
       command: |
         HOMEBREW_NO_AUTO_UPDATE=1 brew tap wix/brew >/dev/null
         HOMEBREW_NO_AUTO_UPDATE=1 brew tap homebrew/cask >/dev/null
-        HOMEBREW_NO_AUTO_UPDATE=1 brew install node@<<parameters.node_version>> >/dev/null
         HOMEBREW_NO_AUTO_UPDATE=1 brew install applesimutils >/dev/null
         HOMEBREW_NO_AUTO_UPDATE=1 brew cask install android-sdk >/dev/null
         touch .watchmanconfig
