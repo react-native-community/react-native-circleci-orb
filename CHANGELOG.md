@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/react-native-community/react-native-circleci-orb/compare/v3.0.0...v3.0.1) (2020-02-03)
+
+
+### Bug Fixes
+
+* Fix errors when installing NodeJS on MacOS executor ([#40](https://github.com/react-native-community/react-native-circleci-orb/issues/40) by [@roni-castro](https://github.com/roni-castro)) ([19ac8f7](https://github.com/react-native-community/react-native-circleci-orb/commit/19ac8f7))
+
 # [3.0.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v2.0.1...v3.0.0) (2020-01-26)
 
 
