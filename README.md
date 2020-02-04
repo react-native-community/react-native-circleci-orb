@@ -10,7 +10,7 @@ Setting up CircleCI to test your React Native app correctly is hard. You need to
 With this Orb we provide simple reusable building blocks which you can use to do the right thing easily.
 
 ## Overview
-First, we recommend reading the [Using Orbs](https://circleci.com/docs/2.0/using-orbs/) guide from the CircleCI documentartion to get an overview of how to use Orbs.
+First, we recommend reading the [Using Orbs](https://circleci.com/docs/2.0/using-orbs/) guide from the CircleCI documentation to get an overview of how to use Orbs.
 
 This Orb provides three different categories of tools to help you build and test your React Native app on CircleCI:
 
