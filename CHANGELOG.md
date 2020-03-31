@@ -1,3 +1,15 @@
+# [4.0.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v3.0.1...v4.0.0) (2020-03-31)
+
+
+### Features
+
+* **ios:** Upgrading Xcode to 11.0 ([#45](https://github.com/react-native-community/react-native-circleci-orb/issues/45) by [@springcoil](https://github.com/springcoil)) ([78aad72](https://github.com/react-native-community/react-native-circleci-orb/commit/78aad72))
+
+
+### BREAKING CHANGES
+
+* **ios:** You should confirm that your app is able to build on Xcode 11 before upgrade, however, most app will already support this.
+
 ## [3.0.1](https://github.com/react-native-community/react-native-circleci-orb/compare/v3.0.0...v3.0.1) (2020-02-03)
 
 
