@@ -2,11 +2,11 @@ parameters:
   java_options:
     description: Java command options. Note that setting this will override the default options so you might need to supply those as well.
     type: string
-    default: '-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap'
+    default: '-Xmx1024m -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap'
   gradle_options:
     description: Gradle command options. Note that setting this will override the default options so you might need to supply those as well.
     type: string
-    default: '-Dorg.gradle.daemon=false -Dorg.gradle.jvmargs="-XX:+UnlockExperimentalVMOptions -XX:+HeapDumpOnOutOfMemoryError"'
+    default: '-Xmx2014m -Dorg.gradle.daemon=false -Dorg.gradle.jvmargs="-XX:+UnlockExperimentalVMOptions -XX:+HeapDumpOnOutOfMemoryError"'
   resource_class:
     description: Changes the resource class of the executor. Requires a support request to enable the resource_class parameter. See https://circleci.com/docs/2.0/configuration-reference/#resource_class
     type: string
