@@ -4142,10 +4142,10 @@ safe-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-semantic-release-circleci-orb@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/semantic-release-circleci-orb/-/semantic-release-circleci-orb-1.1.0.tgz#da4744b7bab2961184453322baa975aa59fd12a9"
-  integrity sha512-7XLHOxqv8oliCjJAlhhjlUDu/ThSQiAR+CGj7XgevQow6UWMnwhG2o4q5axPlm7xf77dRGp1Xw5IC+twOgZrCQ==
+semantic-release-circleci-orb@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/semantic-release-circleci-orb/-/semantic-release-circleci-orb-1.1.1.tgz#3a03ed429da458f78be5bfd9e9211f0cbf2fab60"
+  integrity sha512-JHfsUh2F/+ZzKqpuaxTAGDCJ2l5qsKU6iEoXQD741RZd5Y3zrbEtUdjYHdTd6TZVnSB+BFk7Y+rcCrOPjJSQLQ==
   dependencies:
     "@semantic-release/error" "^2.2.0"
     aggregate-error "^2.0.0"

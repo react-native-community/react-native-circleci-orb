@@ -12,7 +12,7 @@
     [
       "semantic-release-circleci-orb",
       {
-        "commandName": "~/circleci",
+        "commandName": "/home/circleci/circleci",
         "orbName": "react-native-community/react-native",
         "orbPath": "packed-orb.yml"
       }
