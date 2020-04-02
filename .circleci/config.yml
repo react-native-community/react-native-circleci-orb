@@ -31,8 +31,9 @@ jobs:
           name: Install latest CircleCI CLI
           command: |
             curl -fLSs https://raw.githubusercontent.com/CircleCI-Public/circleci-cli/master/install.sh | DESTDIR=~ bash
-            which ~/circleci
-            ~/circleci --help
+            mv ~/circleci ~/circleci-tool
+            which ~/circleci-tool
+            ~/circleci-tool --help
       - restore_cache:
           key: yarn-cache-{{ arch }}-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}-{{ .Environment.CACHE_VERSION }}
       - run:
