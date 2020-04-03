@@ -1,10 +1,6 @@
 description: Builds the iOS app at the given path with the given build scheme and configuration. This should be run only after installing NPM dependencies.
 
 parameters:
-  pod_install_directory:
-    type: string
-    default: ""
-    description: The location of the "ios" directory for `pod install`
   project_type:
     description: If the iOS app is built using a project file (*.xcodeproj) or a workspace.
     type: enum
@@ -35,11 +31,6 @@ steps:
       keys:
         - ios-build-cache-{{ arch }}-{{ checksum "~/.tmp/checksumfiles/package.json" }}-{{ .Environment.CACHE_VERSION }}
 
-  - when:
-      condition: <<parameters.pod_install_directory>>
-      steps:
-        - pod_install:
-            pod_install_directory: <<parameters.pod_install_directory>>
   - run:
       name: Build iOS App
       command: "export RCT_NO_LAUNCH_PACKAGER=true && xcodebuild -<<parameters.project_type>> <<parameters.project_path>> -destination 'platform=iOS Simulator,name=<<parameters.device>>' -scheme <<parameters.scheme>> -parallelizeTargets -configuration <<parameters.build_configuration>> -derivedDataPath <<parameters.derived_data_path>>  -UseModernBuildSystem=YES | xcpretty -k"

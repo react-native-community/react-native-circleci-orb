@@ -7,6 +7,7 @@ description: install pods, use CircleCI cache to fetch CocoaPods specs
 parameters:
   pod_install_directory:
     type: string
+    default: "ios"
     description: The location of the "ios" directory
 steps:
   - run:

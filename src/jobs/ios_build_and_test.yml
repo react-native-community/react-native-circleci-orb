@@ -20,11 +20,11 @@ parameters:
     description: If we should start the Metro packager in the background for this job.
     type: boolean
     default: false
-  # For the iOS build command
   pod_install_directory:
     type: string
     default: ""
     description: The location of the "ios" directory for `pod install`
+  # For the iOS build command
   project_type:
     description: If the iOS app is built using a project file (*.xcodeproj) or a workspace.
     type: enum
@@ -93,8 +93,12 @@ steps:
       condition: <<parameters.start_metro>>
       steps:
         - metro_start
+  - when:
+      condition: <<parameters.pod_install_directory>>
+      steps:
+        - pod_install:
+            pod_install_directory: <<parameters.pod_install_directory>>
   - ios_build:
-      pod_install_directory: <<parameters.pod_install_directory>>
       project_path: <<parameters.project_path>>
       derived_data_path: <<parameters.derived_data_path>>
       device: <<parameters.device>>
