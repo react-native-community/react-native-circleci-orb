@@ -1,3 +1,10 @@
+# [4.1.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v4.0.4...v4.1.0) (2020-04-03)
+
+
+### Features
+
+* **ios:** Add Cocoapods Install Command ([#48](https://github.com/react-native-community/react-native-circleci-orb/issues/48) by [@vonovak](https://github.com/vonovak)) ([a743bbc](https://github.com/react-native-community/react-native-circleci-orb/commit/a743bbc))
+
 ## [4.0.4](https://github.com/react-native-community/react-native-circleci-orb/compare/v4.0.3...v4.0.4) (2020-04-03)
 
 
