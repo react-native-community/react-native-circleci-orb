@@ -1,3 +1,10 @@
+## [4.0.4](https://github.com/react-native-community/react-native-circleci-orb/compare/v4.0.3...v4.0.4) (2020-04-03)
+
+
+### Bug Fixes
+
+* Mac node install ([#47](https://github.com/react-native-community/react-native-circleci-orb/issues/47) by [@vonovak](https://github.com/vonovak)) ([4a4b619](https://github.com/react-native-community/react-native-circleci-orb/commit/4a4b619))
+
 ## [4.0.3](https://github.com/react-native-community/react-native-circleci-orb/compare/v4.0.2...v4.0.3) (2020-04-02)
 
 
