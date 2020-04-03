@@ -20,6 +20,10 @@ parameters:
     description: If we should start the Metro packager in the background for this job.
     type: boolean
     default: false
+  pod_install_directory:
+    type: string
+    default: ""
+    description: The location of the "ios" directory for `pod install`
   # For the iOS build command
   project_type:
     description: If the iOS app is built using a project file (*.xcodeproj) or a workspace.
@@ -62,7 +66,7 @@ parameters:
   node_version:
     description: The version of Node to use. This can be either a major version ("8"), a major and minor ("8.4"), or a fully qualified version ("8.4.1").
     type: string
-    default: '10'
+    default: "10"
 
 steps:
   - when:
@@ -75,9 +79,9 @@ steps:
         - attach_workspace:
             at: <<parameters.workspace_root>>
   - setup_macos_executor:
-        node_version: <<parameters.node_version>>
+      node_version: <<parameters.node_version>>
   - ios_simulator_start:
-        device: <<parameters.device>>
+      device: <<parameters.device>>
   - yarn_install
   - when:
       condition: <<parameters.on_after_initialize>>
@@ -89,6 +93,11 @@ steps:
       condition: <<parameters.start_metro>>
       steps:
         - metro_start
+  - when:
+      condition: <<parameters.pod_install_directory>>
+      steps:
+        - pod_install:
+            pod_install_directory: <<parameters.pod_install_directory>>
   - ios_build:
       project_path: <<parameters.project_path>>
       derived_data_path: <<parameters.derived_data_path>>
