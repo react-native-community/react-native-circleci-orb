@@ -67,6 +67,10 @@ parameters:
     description: The version of Node to use. This can be either a major version ("8"), a major and minor ("8.4"), or a fully qualified version ("8.4.1").
     type: string
     default: "10"
+  force_node_version:
+    description: If you want a specific version of node when running yarn install.
+    type: boolean
+    default: false
 
 steps:
   - when:
@@ -82,7 +86,8 @@ steps:
       node_version: <<parameters.node_version>>
   - ios_simulator_start:
       device: <<parameters.device>>
-  - yarn_install
+  - yarn_install:
+      force_node_version: <<parameters.force_node_version>>
   - when:
       condition: <<parameters.on_after_initialize>>
       steps:

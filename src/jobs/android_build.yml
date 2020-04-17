@@ -37,6 +37,10 @@ parameters:
     description: A custom command to run right after yarn install.
     type: string
     default: ""
+  force_node_version:
+    description: If you want a specific version of node when running yarn_install.
+    type: boolean
+    default: false
 
 steps:
   - when:
@@ -48,7 +52,8 @@ steps:
       steps:
         - attach_workspace:
             at: <<parameters.workspace_root>>
-  - yarn_install
+  - yarn_install:
+      force_node_version: <<parameters.force_node_version>>
   - when:
       condition: <<parameters.on_after_initialize>>
       steps:
