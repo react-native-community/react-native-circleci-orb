@@ -1,7 +1,7 @@
 description: Install Javascript dependencies using Yarn. This command correctly configures the cache for any number of package.json and yarn.lock files.
 
 parameters:
-  force_node_version:
+  force_node_version_install:
     description: If you want a specific version, when you this command.
     type: boolean
     default: false

@@ -48,7 +48,7 @@ parameters:
     description: The version of Node to use. This can be either a major version ("8"), a major and minor ("8.4"), or a fully qualified version ("8.4.1").
     type: string
     default: '10'
-  force_node_version:
+  force_node_version_install:
     description: If you want a specific version of node when running yarn_install.
     type: boolean
     default: false
@@ -59,7 +59,7 @@ steps:
   - setup_macos_executor:
         node_version: <<parameters.node_version>>
   - yarn_install:
-      force_node_version: <<parameters.force_node_version>>
+      force_node_version_install: <<parameters.force_node_version_install>>
   - when:
       condition: <<parameters.on_after_initialize>>
       steps:
