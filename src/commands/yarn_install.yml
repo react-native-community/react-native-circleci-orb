@@ -1,6 +1,18 @@
 description: Install Javascript dependencies using Yarn. This command correctly configures the cache for any number of package.json and yarn.lock files.
 
+parameters:
+  force_node_version:
+    description: If you want a specific version, when you this command.
+    type: boolean
+    default: false
+
 steps:
+  - when:
+      condition: <<parameters.force_node_version_install>>
+      steps:
+        - set_node_version:
+          node_version: <<parameters.node_version>>
+      
   - run:
       name: Create cache checksum file
       command: |
