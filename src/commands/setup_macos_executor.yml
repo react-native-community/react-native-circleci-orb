@@ -24,7 +24,7 @@ steps:
 
   - run: 
       - set_node_version:
-        node_version: <<parameters.node_version>>
+          node_version: <<parameters.node_version>>
   - run:
       name: Configure Detox Environment
       command: |

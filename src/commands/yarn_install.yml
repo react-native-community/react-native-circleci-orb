@@ -15,8 +15,7 @@ steps:
       condition: <<parameters.force_node_version_install>>
       steps:
         - set_node_version:
-          node_version: <<parameters.node_version>>
-      
+            node_version: <<parameters.node_version>>
   - run:
       name: Create cache checksum file
       command: |

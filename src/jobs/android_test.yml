@@ -60,6 +60,7 @@ steps:
         node_version: <<parameters.node_version>>
   - yarn_install:
       force_node_version_install: <<parameters.force_node_version_install>>
+      node_version: <<parameters.node_version>>
   - when:
       condition: <<parameters.on_after_initialize>>
       steps:
