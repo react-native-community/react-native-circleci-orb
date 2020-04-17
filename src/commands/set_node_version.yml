@@ -17,5 +17,10 @@ steps:
         nvm install <<parameters.node_version>>
         nvm alias default <<parameters.node_version>>
   - run:
+      name: Update node_version at bash
+      command: |
+        echo 'export PATH="$PATH:/usr/local/opt/node@<<parameters.node_version>>/bin:~/.yarn/bin:~/project/node_modules/.bin:~/project/example/node_modules/.bin"' >> $BASH_ENV
+        source $BASH_ENV
+  - run:
       name: Verify node version
       command: node --version
