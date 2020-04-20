@@ -1,3 +1,10 @@
+## [4.1.1](https://github.com/react-native-community/react-native-circleci-orb/compare/v4.1.0...v4.1.1) (2020-04-20)
+
+
+### Bug Fixes
+
+* **ios:** Possible fix for the NVM node version not carrying over between steps ([#51](https://github.com/react-native-community/react-native-circleci-orb/issues/51)) ([ae71c53](https://github.com/react-native-community/react-native-circleci-orb/commit/ae71c53))
+
 # [4.1.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v4.0.4...v4.1.0) (2020-04-03)
 
 
