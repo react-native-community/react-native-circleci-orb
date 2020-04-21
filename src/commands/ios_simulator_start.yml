@@ -9,7 +9,7 @@ parameters:
 steps:
   - run:
       name: Remove all simulators to avoid conflicts with the one we're going to use
-      command: xcrun simctl list | awk -F “[()]” ‘{ for (i=2; i<NF; i+=2) print $i }’ | grep ‘^[-A-Z0–9]*$’ | xargs -I uuid xcrun simctl delete uuid
+      command: xcrun simctl list | awk -F "[()]" '{ for (i=2; i<NF; i+=2) print $i }' | grep '^[-A-Z0–9]*$' | xargs -I uuid xcrun simctl delete uuid
   - run:
       name: Create the device simulator we need
       command: xcrun simctl create "<<parameters.device>>" "<<parameters.device>>"
