@@ -58,6 +58,10 @@ parameters:
     type: enum
     enum: ["fatal", "error", "warn", "info", "verbose", "trace"]
     default: warn
+  store_artifact_path:
+    description: Stores detox artifacts at CircleCI 
+    type: string
+    default: ""
   on_after_initialize:
     description: A custom command to run right after yarn install.
     type: string
@@ -108,3 +112,8 @@ steps:
   - detox_test:
       configuration: <<parameters.detox_configuration>>
       loglevel: <<parameters.detox_loglevel>>
+  - when:
+      condition: <<parameters.store_artifact_path>>
+      steps:
+        - store_artifacts:
+            path: <<parameters.store_artifact_path>>
