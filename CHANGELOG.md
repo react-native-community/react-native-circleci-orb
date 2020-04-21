@@ -1,3 +1,10 @@
+# [4.2.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v4.1.1...v4.2.0) (2020-04-21)
+
+
+### Features
+
+* **ios:** Ensure a simulator with the latest iOS version exists for the given name when testing ([2d614fa](https://github.com/react-native-community/react-native-circleci-orb/commit/2d614fa))
+
 ## [4.1.1](https://github.com/react-native-community/react-native-circleci-orb/compare/v4.1.0...v4.1.1) (2020-04-20)
 
 
