@@ -1,3 +1,10 @@
+## [4.2.2](https://github.com/react-native-community/react-native-circleci-orb/compare/v4.2.1...v4.2.2) (2020-04-23)
+
+
+### Bug Fixes
+
+* **ios:** Revert changes from 4.2.0 ([2c3fa5e](https://github.com/react-native-community/react-native-circleci-orb/commit/2c3fa5e))
+
 ## [4.2.1](https://github.com/react-native-community/react-native-circleci-orb/compare/v4.2.0...v4.2.1) (2020-04-22)
 
 
