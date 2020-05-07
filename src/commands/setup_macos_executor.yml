@@ -4,7 +4,7 @@ parameters:
   node_version:
     description: The version of Node to use. This can be either a major version ("8"), a major and minor ("8.4"), or a fully qualified version ("8.4.1").
     type: string
-    default: '10'
+    default: "10"
 
 steps:
   - run:
@@ -15,14 +15,14 @@ steps:
         echo 'export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"' >> $BASH_ENV
         echo 'export PATH="$ANDROID_SDK_ROOT/emulator:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH"' >> $BASH_ENV
         echo 'export QEMU_AUDIO_DRV=none' >> $BASH_ENV
-        echo 'export JAVA_HOME=/Library/Java/Home' >> $BASH_ENV
+        echo 'export JAVA_HOME=$(/usr/libexec/java_home)' >> $BASH_ENV
         source $BASH_ENV
 
   - restore_cache:
       key: |
         brew-cache-{{ arch }}-{{ .Environment.CACHE_VERSION }}
 
-  - run: 
+  - run:
       name: Install node@<<parameters.node_version>>
       # after `curl`, bashrc contains the script to load nvm, we need to source it to use it
       command: |
@@ -37,7 +37,7 @@ steps:
   - run:
       name: Verify node version
       command: node --version
-  
+
   - run:
       name: Configure Detox Environment
       command: |
