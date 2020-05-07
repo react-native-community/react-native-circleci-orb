@@ -29,7 +29,7 @@ steps:
         yes | sdkmanager "build-tools;<<parameters.build_tools_version>>" >/dev/null
         yes | sdkmanager --licenses >/dev/null
         yes | sdkmanager --list
-  
+
   # to force ssh key generation for emulators
   - run:
       name: ADB Start Stop
@@ -41,7 +41,10 @@ steps:
 
   - run:
       name: Create Android Emulator
-      command: avdmanager create avd --force -n <<parameters.device_name>> -k "system-images;<<parameters.platform_version>>;google_apis;x86" -g google_apis -d "Nexus 4"
+      command:
+        avdmanager create avd --force --name <<parameters.device_name>> --package
+        "system-images;<<parameters.platform_version>>;default;x86_64" --tag
+        default --device pixel
 
   - run:
       name: Start Android Emulator (background)
