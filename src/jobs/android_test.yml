@@ -26,7 +26,7 @@ parameters:
     type: string
     default: "28.0.3"
   logcat_grep:
-    description: ADB logs will be shown in the "Start Android Emulator" commands, but we filter it using grep to avoid noise. You can specify additional strigns to grep for. Make sure you escape special characters. Defaults to 'com.reactnativecommunity'.
+    description: ADB logs will be shown in the "Start Android Emulator" commands, but we filter it using grep to avoid noise. You can specify additional strings to grep for. Make sure you escape special characters. Defaults to 'com.reactnativecommunity'.
     type: string
     default: "com.reactnativecommunity"
   # For the detox command
