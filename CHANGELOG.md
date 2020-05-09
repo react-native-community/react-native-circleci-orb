@@ -1,3 +1,11 @@
+# [4.3.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v4.2.3...v4.3.0) (2020-05-09)
+
+
+### Features
+
+* follow emulator best practices ([a5765a2](https://github.com/react-native-community/react-native-circleci-orb/commit/a5765a2))
+* follow emulator best practices ([#62](https://github.com/react-native-community/react-native-circleci-orb/issues/62)) ([ac709c1](https://github.com/react-native-community/react-native-circleci-orb/commit/ac709c1))
+
 ## [4.2.3](https://github.com/react-native-community/react-native-circleci-orb/compare/v4.2.2...v4.2.3) (2020-05-09)
 
 
