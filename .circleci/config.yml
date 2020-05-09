@@ -37,10 +37,10 @@ jobs:
           key: yarn-cache-{{ arch }}-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}-{{ .Environment.CACHE_VERSION }}
       - run:
           name: Yarn Install
-          command: yarn install --non-interactive --cache-folder ~/.cache/yarn
+          command: yarn install --non-interactive --cache-folder /tmp/yarn
       - save_cache:
           paths:
-            - ~/.cache/yarn
+            - /tmp/yarn
           key: yarn-cache-{{ arch }}-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}-{{ .Environment.CACHE_VERSION }}
       - run:
           name: Add Github to known hosts

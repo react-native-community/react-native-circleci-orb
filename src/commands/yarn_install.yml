@@ -12,9 +12,9 @@ steps:
         - yarn-cache-{{ arch }}-{{ checksum "~/.tmp/checksumfiles/package.json" }}-{{ checksum "~/.tmp/checksumfiles/yarn.lock" }}-{{ .Environment.CACHE_VERSION }}
   - run:
       name: Yarn Install
-      command: yarn install --frozen-lockfile --non-interactive --cache-folder ~/.cache/yarn
+      command: yarn install --frozen-lockfile --non-interactive --cache-folder /tmp/yarn
   - save_cache:
       paths:
-        - ~/.cache/yarn
+        - /tmp/yarn
       key: |
         yarn-cache-{{ arch }}-{{ checksum "~/.tmp/checksumfiles/package.json" }}-{{ checksum "~/.tmp/checksumfiles/yarn.lock" }}-{{ .Environment.CACHE_VERSION }}
