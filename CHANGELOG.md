@@ -1,3 +1,12 @@
+## [4.2.3](https://github.com/react-native-community/react-native-circleci-orb/compare/v4.2.2...v4.2.3) (2020-05-09)
+
+
+### Bug Fixes
+
+* **android:** fix JAVA_HOME path ([#61](https://github.com/react-native-community/react-native-circleci-orb/issues/61) by [@vonovak](https://github.com/vonovak)) ([e4fa01f](https://github.com/react-native-community/react-native-circleci-orb/commit/e4fa01f))
+* **android:** fix path to emulator ([#60](https://github.com/react-native-community/react-native-circleci-orb/issues/60) by [@vonovak](https://github.com/vonovak)) ([8621ec9](https://github.com/react-native-community/react-native-circleci-orb/commit/8621ec9))
+* Move cache directory to the system temp folder to avoid permission issues ([#59](https://github.com/react-native-community/react-native-circleci-orb/issues/59) by @Naturalclar) ([15f0d90](https://github.com/react-native-community/react-native-circleci-orb/commit/15f0d90))
+
 ## [4.2.2](https://github.com/react-native-community/react-native-circleci-orb/compare/v4.2.1...v4.2.2) (2020-04-23)
 
 
