@@ -1,3 +1,10 @@
+# [4.4.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v4.3.0...v4.4.0) (2020-05-09)
+
+
+### Features
+
+* Add a `store_artifact_path` to the Android and iOS test jobs which allow storing artifacts after a job runs ([#54](https://github.com/react-native-community/react-native-circleci-orb/issues/54) by @MateusAndrade) ([19edf8a](https://github.com/react-native-community/react-native-circleci-orb/commit/19edf8a))
+
 # [4.3.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v4.2.3...v4.3.0) (2020-05-09)
 
 
