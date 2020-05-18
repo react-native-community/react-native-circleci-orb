@@ -1,3 +1,10 @@
+## [4.4.2](https://github.com/react-native-community/react-native-circleci-orb/compare/v4.4.1...v4.4.2) (2020-05-18)
+
+
+### Bug Fixes
+
+* **android:** Ensure the Android emulator looks correct ([#65](https://github.com/react-native-community/react-native-circleci-orb/issues/65) by [@vonovak](https://github.com/vonovak)) ([57744a4](https://github.com/react-native-community/react-native-circleci-orb/commit/57744a4))
+
 ## [4.4.1](https://github.com/react-native-community/react-native-circleci-orb/compare/v4.4.0...v4.4.1) (2020-05-18)
 
 
