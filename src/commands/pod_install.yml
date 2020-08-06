@@ -12,6 +12,7 @@ parameters:
 steps:
   - restore_cache:
       keys:
+        - cache-pods-{{ checksum "<<parameters.pod_install_directory>>/Podfile.lock" }}-{{ .Environment.CACHE_VERSION }}
         - cache-pods-
   - run:
       name: Install CocoaPods
