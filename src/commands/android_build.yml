@@ -43,7 +43,7 @@ steps:
   # download and cache dependencies and Gradle
   - run:
       name: Downloading Gradle Dependencies
-      command: "cd <<parameters.project_path>> && ./gradlew --max-workers 2 downloadDependencies"
+      command: "cd <<parameters.project_path>> && chmod +x gradlew && ./gradlew --max-workers 2 downloadDependencies"
 
   - save_cache:
       name: Saving Gradle wrapper cache
