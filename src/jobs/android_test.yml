@@ -43,7 +43,7 @@ parameters:
     description: Stores detox artifacts at CircleCI 
     type: string
     default: ""
-  on_after_initialize:
+  should_on_after_initialize:
     description: Set this to true if you want to run a custom shell command right after yarn install. Provide the command in on_after_initialize_command
     type: boolean
     default: false
@@ -64,7 +64,7 @@ steps:
         node_version: <<parameters.node_version>>
   - yarn_install
   - when:
-      condition: <<parameters.on_after_initialize>>
+      condition: <<parameters.should_on_after_initialize>>
       steps:
         - run:
             name: "on_after_initialize"
