@@ -10,8 +10,16 @@ parameters:
     default: "ios"
     description: The location of the "ios" directory
 steps:
+  - restore_cache:
+      keys:
+        - cache-pods-{{ checksum "<<parameters.pod_install_directory>>/Podfile.lock" }}-{{ .Environment.CACHE_VERSION }}
+        - cache-pods-
   - run:
       name: Install CocoaPods
       command: |
         curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
         cd <<parameters.pod_install_directory>> && pod install && cd -
+  - save_cache:
+      paths:
+        - <<parameters.pod_install_directory>>/Pods
+      key: cache-pods-{{ checksum "<<parameters.pod_install_directory>>/Podfile.lock" }}-{{ .Environment.CACHE_VERSION }}
