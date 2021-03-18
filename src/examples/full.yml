@@ -12,7 +12,7 @@ usage:
     checkout_code:
       executor: 
         name: rn/linux_js
-        node_version: '10'
+        node_version: '12'
       steps:
         - checkout
         - persist_to_workspace:
@@ -89,7 +89,7 @@ usage:
         # Build the iOS app in release mode and do not run tests
         - rn/ios_build:
             name: build_ios_release
-            node_version: '10'
+            node_version: '12'
             project_path: ios/Example.xcodeproj
             device: "iPhone X"
             build_configuration: Release
@@ -99,7 +99,7 @@ usage:
 
         # Build and test the iOS app in release mode
         - rn/ios_build_and_test:
-            node_version: '10'
+            node_version: '12'
             project_path: "ios/Example.xcodeproj"
             device: "iPhone X"
             build_configuration: "Release"

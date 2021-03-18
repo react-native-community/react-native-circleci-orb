@@ -4,7 +4,7 @@ parameters:
   node_version:
     description: The version of Node to use. This can be either a major version ("8"), a major and minor ("8.4"), or a fully qualified version ("8.4.1").
     type: string
-    default: "10"
+    default: "12"
 
 steps:
   - run:
