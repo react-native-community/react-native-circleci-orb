@@ -1,3 +1,15 @@
+# [4.5.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v4.4.2...v4.5.0) (2021-03-18)
+
+
+### Bug Fixes
+
+* duplicated on_after_initialize  param ([#78](https://github.com/react-native-community/react-native-circleci-orb/issues/78)) ([33ffc6b](https://github.com/react-native-community/react-native-circleci-orb/commit/33ffc6b))
+
+
+### Features
+
+* Add pod cache ([#67](https://github.com/react-native-community/react-native-circleci-orb/issues/67)) ([96b0f3f](https://github.com/react-native-community/react-native-circleci-orb/commit/96b0f3f))
+
 ## [4.4.2](https://github.com/react-native-community/react-native-circleci-orb/compare/v4.4.1...v4.4.2) (2020-05-18)
 
 
