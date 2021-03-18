@@ -1,4 +1,4 @@
-description: install pods, use CircleCI cache to fetch CocoaPods specs
+description: install pods
 
 # note: do not use the --project-directory pod param because many example
 # projects in the rn community repos rely on pod install to be run from ios directory
@@ -17,7 +17,6 @@ steps:
   - run:
       name: Install CocoaPods
       command: |
-        curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
         cd <<parameters.pod_install_directory>> && pod install && cd -
   - save_cache:
       paths:
