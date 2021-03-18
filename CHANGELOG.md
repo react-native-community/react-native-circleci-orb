@@ -1,3 +1,10 @@
+## [4.5.1](https://github.com/react-native-community/react-native-circleci-orb/compare/v4.5.0...v4.5.1) (2021-03-18)
+
+
+### Bug Fixes
+
+* Remove deprecated cask usage from brew install ([#85](https://github.com/react-native-community/react-native-circleci-orb/issues/85) by @CHNB128) ([de4ef76](https://github.com/react-native-community/react-native-circleci-orb/commit/de4ef76))
+
 # [4.5.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v4.4.2...v4.5.0) (2021-03-18)
 
 
