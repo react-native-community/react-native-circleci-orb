@@ -1,3 +1,10 @@
+## [4.5.2](https://github.com/react-native-community/react-native-circleci-orb/compare/v4.5.1...v4.5.2) (2021-03-18)
+
+
+### Bug Fixes
+
+* **android:** Fix Permission denied issues when running gradlew ([#72](https://github.com/react-native-community/react-native-circleci-orb/issues/72) by [@zpd106](https://github.com/zpd106)) ([0e22ef8](https://github.com/react-native-community/react-native-circleci-orb/commit/0e22ef8))
+
 ## [4.5.1](https://github.com/react-native-community/react-native-circleci-orb/compare/v4.5.0...v4.5.1) (2021-03-18)
 
 
