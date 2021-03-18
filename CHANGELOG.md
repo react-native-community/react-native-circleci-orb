@@ -1,3 +1,10 @@
+## [4.5.3](https://github.com/react-native-community/react-native-circleci-orb/compare/v4.5.2...v4.5.3) (2021-03-18)
+
+
+### Bug Fixes
+
+* Remove Deprecated CircleCI Spec Repo Cache ([#82](https://github.com/react-native-community/react-native-circleci-orb/issues/82) by @BytesGuy) ([f45fcfe](https://github.com/react-native-community/react-native-circleci-orb/commit/f45fcfe))
+
 ## [4.5.2](https://github.com/react-native-community/react-native-circleci-orb/compare/v4.5.1...v4.5.2) (2021-03-18)
 
 
