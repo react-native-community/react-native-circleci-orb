@@ -1,3 +1,15 @@
+# [5.0.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v4.5.3...v5.0.0) (2021-03-18)
+
+
+### Features
+
+* Update default dependencies to meet React Native 0.64 requirements ([34ca501](https://github.com/react-native-community/react-native-circleci-orb/commit/34ca501))
+
+
+### BREAKING CHANGES
+
+* The default dependencies used are now Xcode 12, CocoaPods 1.10.1, Node.js 12
+
 ## [4.5.3](https://github.com/react-native-community/react-native-circleci-orb/compare/v4.5.2...v4.5.3) (2021-03-18)
 
 
