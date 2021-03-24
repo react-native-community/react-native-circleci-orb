@@ -12,6 +12,10 @@ parameters:
     description: If we should start the Metro packager in the background for this job.
     type: boolean
     default: false
+  yarn_cache:
+    description: Should we cache after yarn install? Defaults to true
+    type: boolean
+    default: true
   # For the start emulator command
   device_name:
     description: The name of the AVD. You use this name to tell which device to run tests on. Defaults to 'TestingAVD'.
@@ -40,7 +44,7 @@ parameters:
     enum: ["fatal", "error", "warn", "info", "verbose", "trace"]
     default: warn
   store_artifact_path:
-    description: Stores detox artifacts at CircleCI 
+    description: Stores detox artifacts at CircleCI
     type: string
     default: ""
   should_on_after_initialize:
@@ -55,14 +59,15 @@ parameters:
   node_version:
     description: The version of Node to use. This can be either a major version ("8"), a major and minor ("8.4"), or a fully qualified version ("8.4.1").
     type: string
-    default: '12'
+    default: "12"
 
 steps:
   - attach_workspace:
       at: <<parameters.workspace_root>>
   - setup_macos_executor:
-        node_version: <<parameters.node_version>>
-  - yarn_install
+      node_version: <<parameters.node_version>>
+  - yarn_install:
+      cache: <<parameters.yarn_cache>>
   - when:
       condition: <<parameters.should_on_after_initialize>>
       steps:

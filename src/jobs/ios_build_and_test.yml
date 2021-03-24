@@ -24,6 +24,10 @@ parameters:
     type: string
     default: ""
     description: The location of the "ios" directory for `pod install`
+  yarn_cache:
+    description: Should we cache after yarn install? Defaults to true
+    type: boolean
+    default: true
   # For the iOS build command
   project_type:
     description: If the iOS app is built using a project file (*.xcodeproj) or a workspace.
@@ -48,6 +52,10 @@ parameters:
   scheme:
     description: The scheme to use.
     type: string
+  xcodebuild_cache:
+    description: Should we cache after Xcode build? Defaults to true
+    type: boolean
+    default: true
   # For the Detox test command
   detox_configuration:
     description: The Detox configuration to test.
@@ -59,7 +67,7 @@ parameters:
     enum: ["fatal", "error", "warn", "info", "verbose", "trace"]
     default: warn
   store_artifact_path:
-    description: Stores detox artifacts at CircleCI 
+    description: Stores detox artifacts at CircleCI
     type: string
     default: ""
   on_after_initialize:
@@ -71,6 +79,10 @@ parameters:
     description: The version of Node to use. This can be either a major version ("8"), a major and minor ("8.4"), or a fully qualified version ("8.4.1").
     type: string
     default: "12"
+  homebrew_cache:
+    description: Should we cache after brew install? Defaults to true
+    type: boolean
+    default: true
 
 steps:
   - when:
@@ -84,9 +96,11 @@ steps:
             at: <<parameters.workspace_root>>
   - setup_macos_executor:
       node_version: <<parameters.node_version>>
+      homebrew_cache: <<parameters.homebrew_cache>>
   - ios_simulator_start:
       device: <<parameters.device>>
-  - yarn_install
+  - yarn_install:
+      cache: <<parameters.yarn_cache>>
   - when:
       condition: <<parameters.on_after_initialize>>
       steps:
@@ -109,6 +123,7 @@ steps:
       build_configuration: <<parameters.build_configuration>>
       scheme: <<parameters.scheme>>
       project_type: <<parameters.project_type>>
+      cache: <<parameters.xcodebuild_cache>>
   - detox_test:
       configuration: <<parameters.detox_configuration>>
       loglevel: <<parameters.detox_loglevel>>

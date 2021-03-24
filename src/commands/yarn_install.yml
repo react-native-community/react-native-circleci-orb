@@ -1,20 +1,32 @@
 description: Install Javascript dependencies using Yarn. This command correctly configures the cache for any number of package.json and yarn.lock files.
 
+parameters:
+  cache:
+    description: Save and restore the build cache? Defaults to true
+    type: boolean
+    default: true
+
 steps:
-  - run:
-      name: Create cache checksum file
-      command: |
-        mkdir -p ~/.tmp/checksumfiles
-        find . -type f -name 'package.json' -not -path "*node_modules*" -exec cat {} + >> ~/.tmp/checksumfiles/package.json
-        find . -type f -name 'yarn.lock' -not -path "*node_modules*" -exec cat {} + >> ~/.tmp/checksumfiles/yarn.lock
-  - restore_cache:
-      keys:
-        - yarn-cache-{{ arch }}-{{ checksum "~/.tmp/checksumfiles/package.json" }}-{{ checksum "~/.tmp/checksumfiles/yarn.lock" }}-{{ .Environment.CACHE_VERSION }}
+  - when:
+      condition: <<parameters.cache>>
+      steps:
+        - run:
+            name: Create cache checksum file
+            command: |
+              mkdir -p ~/.tmp/checksumfiles
+              find . -type f -name 'package.json' -not -path "*node_modules*" -exec cat {} + >> ~/.tmp/checksumfiles/package.json
+              find . -type f -name 'yarn.lock' -not -path "*node_modules*" -exec cat {} + >> ~/.tmp/checksumfiles/yarn.lock
+        - restore_cache:
+            keys:
+              - yarn-cache-{{ arch }}-{{ checksum "~/.tmp/checksumfiles/package.json" }}-{{ checksum "~/.tmp/checksumfiles/yarn.lock" }}-{{ .Environment.CACHE_VERSION }}
   - run:
       name: Yarn Install
       command: yarn install --frozen-lockfile --non-interactive --cache-folder /tmp/yarn
-  - save_cache:
-      paths:
-        - /tmp/yarn
-      key: |
-        yarn-cache-{{ arch }}-{{ checksum "~/.tmp/checksumfiles/package.json" }}-{{ checksum "~/.tmp/checksumfiles/yarn.lock" }}-{{ .Environment.CACHE_VERSION }}
+  - when:
+      condition: <<parameters.cache>>
+      steps:
+        - save_cache:
+            paths:
+              - /tmp/yarn
+            key: |
+              yarn-cache-{{ arch }}-{{ checksum "~/.tmp/checksumfiles/package.json" }}-{{ checksum "~/.tmp/checksumfiles/yarn.lock" }}-{{ .Environment.CACHE_VERSION }}

@@ -24,6 +24,10 @@ parameters:
     description: Store this job store files as job artifacts? Defaults to true
     type: boolean
     default: true
+  yarn_cache:
+    description: Should we cache after yarn install? Defaults to true
+    type: boolean
+    default: true
   # For the build command
   project_path:
     description: The path to the root of the Android project you want to build, relative to the root of the repository.
@@ -37,6 +41,10 @@ parameters:
     description: A custom command to run right after yarn install.
     type: string
     default: ""
+  build_cache:
+    description: Should we cache after Gradle build? Defaults to true
+    type: boolean
+    default: true
 
 steps:
   - when:
@@ -48,7 +56,8 @@ steps:
       steps:
         - attach_workspace:
             at: <<parameters.workspace_root>>
-  - yarn_install
+  - yarn_install:
+      cache: <<parameters.yarn_cache>>
   - when:
       condition: <<parameters.on_after_initialize>>
       steps:
@@ -58,6 +67,7 @@ steps:
   - android_build:
       project_path: <<parameters.project_path>>
       build_type: <<parameters.build_type>>
+      cache: <<parameters.build_cache>>
   - when:
       condition: <<parameters.persist_to_workspace>>
       steps:

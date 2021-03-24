@@ -1,4 +1,4 @@
-description: Builds the Android app at the given path with the given build types. This should be run only after installing dependencies. 
+description: Builds the Android app at the given path with the given build types. This should be run only after installing dependencies.
 
 parameters:
   project_path:
@@ -9,27 +9,34 @@ parameters:
     description: The build type to build. This is normally either "debug" or "release" but you may have custom build types configured for your app.
     type: string
     default: "debug"
+  cache:
+    description: Save and restore the caches? Defaults to true
+    type: boolean
+    default: true
 
 steps:
-  - run:
-      name: Create cache checksum files
-      command: |
-        mkdir -p ~/.tmp/checksumfiles
-        find . -type f -name 'build.gradle' -not -path "*node_modules*" -exec cat {} + >> ~/.tmp/checksumfiles/build.gradle
-        find . -type f -name 'settings.gradle' -not -path "*node_modules*" -exec cat {} + >> ~/.tmp/checksumfiles/settings.gradle
+  - when:
+      condition: <<parameters.cache>>
+      steps:
+        - run:
+            name: Create cache checksum files
+            command: |
+              mkdir -p ~/.tmp/checksumfiles
+              find . -type f -name 'build.gradle' -not -path "*node_modules*" -exec cat {} + >> ~/.tmp/checksumfiles/build.gradle
+              find . -type f -name 'settings.gradle' -not -path "*node_modules*" -exec cat {} + >> ~/.tmp/checksumfiles/settings.gradle
 
-  - restore_cache:
-      keys:
-        - gradle-wrapper-{{ arch }}-{{ checksum "<<parameters.project_path>>/gradle/wrapper/gradle-wrapper.properties" }}-{{ .Environment.CACHE_VERSION }}
+        - restore_cache:
+            keys:
+              - gradle-wrapper-{{ arch }}-{{ checksum "<<parameters.project_path>>/gradle/wrapper/gradle-wrapper.properties" }}-{{ .Environment.CACHE_VERSION }}
 
-  - restore_cache:
-      keys:
-        - gradle-home-cache-{{ arch }}-{{ checksum "~/.tmp/checksumfiles/build.gradle" }}-{{ checksum "~/.tmp/checksumfiles/settings.gradle" }}-{{ .Environment.CACHE_VERSION }}
+        - restore_cache:
+            keys:
+              - gradle-home-cache-{{ arch }}-{{ checksum "~/.tmp/checksumfiles/build.gradle" }}-{{ checksum "~/.tmp/checksumfiles/settings.gradle" }}-{{ .Environment.CACHE_VERSION }}
 
-  - restore_cache:
-      name: Restoring Gradle Build caches
-      keys:
-        - gradle-build-cache-{{ .Revision }}
+        - restore_cache:
+            name: Restoring Gradle Build caches
+            keys:
+              - gradle-build-cache-{{ .Revision }}
 
   - run:
       name: Dispersing Gradle Build caches for restoring
@@ -45,35 +52,41 @@ steps:
       name: Downloading Gradle Dependencies
       command: "cd <<parameters.project_path>> && chmod +x gradlew && ./gradlew --max-workers 2 downloadDependencies"
 
-  - save_cache:
-      name: Saving Gradle wrapper cache
-      paths:
-        - ~/.gradle/wrapper/
-      key: gradle-wrapper-{{ arch }}-{{ checksum "<<parameters.project_path>>/gradle/wrapper/gradle-wrapper.properties" }}-{{ .Environment.CACHE_VERSION }}
+  - when:
+      condition: <<parameters.cache>>
+      steps:
+        - save_cache:
+            name: Saving Gradle wrapper cache
+            paths:
+              - ~/.gradle/wrapper/
+            key: gradle-wrapper-{{ arch }}-{{ checksum "<<parameters.project_path>>/gradle/wrapper/gradle-wrapper.properties" }}-{{ .Environment.CACHE_VERSION }}
 
-  - save_cache:
-      name: Saving Gradle home cache
-      paths:
-        - ~/.gradle/caches/
-      key: gradle-home-cache-{{ arch }}-{{ checksum "~/.tmp/checksumfiles/build.gradle" }}-{{ checksum "~/.tmp/checksumfiles/settings.gradle" }}-{{ .Environment.CACHE_VERSION }}
+        - save_cache:
+            name: Saving Gradle home cache
+            paths:
+              - ~/.gradle/caches/
+            key: gradle-home-cache-{{ arch }}-{{ checksum "~/.tmp/checksumfiles/build.gradle" }}-{{ checksum "~/.tmp/checksumfiles/settings.gradle" }}-{{ .Environment.CACHE_VERSION }}
 
   - run:
       name: Build Android APK
       command: "cd <<parameters.project_path>> && chmod +x gradlew && ./gradlew --build-cache --max-workers 2 --continue assemble<<parameters.build_type>> assembleAndroidTest -DtestBuildType=<<parameters.build_type>> --stacktrace"
 
-  - run:
-      name: Collecting Gradle Build caches for saving
-      command: |
-        mkdir -p ~/gradle-build-caches
-        [ -d ~/.gradle/caches ] &&
-          [ -n "$(ls -Ad ~/.gradle/caches/build-cache-* 2>/dev/null)" ] &&
-          rm -rf ~/gradle-build-caches/* &&
-          mv ~/.gradle/caches/build-cache-* ~/gradle-build-caches || true
-      when: always
+  - when:
+      condition: <<parameters.cache>>
+      steps:
+        - run:
+            name: Collecting Gradle Build caches for saving
+            command: |
+              mkdir -p ~/gradle-build-caches
+              [ -d ~/.gradle/caches ] &&
+                [ -n "$(ls -Ad ~/.gradle/caches/build-cache-* 2>/dev/null)" ] &&
+                rm -rf ~/gradle-build-caches/* &&
+                mv ~/.gradle/caches/build-cache-* ~/gradle-build-caches || true
+            when: always
 
-  - save_cache:
-      name: Saving Gradle Build caches
-      paths:
-        - ~/gradle-build-caches
-      key: gradle-debug-build-cache-{{ .Revision }}
-      when: always
+        - save_cache:
+            name: Saving Gradle Build caches
+            paths:
+              - ~/gradle-build-caches
+            key: gradle-debug-build-cache-{{ .Revision }}
+            when: always

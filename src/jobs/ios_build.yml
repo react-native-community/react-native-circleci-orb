@@ -20,6 +20,10 @@ parameters:
     description: If we should start the Metro packager in the background for this job.
     type: boolean
     default: false
+  yarn_cache:
+    description: Should we cache after yarn install? Defaults to true
+    type: boolean
+    default: true
   # For the iOS build command
   project_type:
     description: If the iOS app is built using a project file (*.xcodeproj) or a workspace.
@@ -48,11 +52,19 @@ parameters:
     description: A custom command to run right after yarn install.
     type: string
     default: ""
+  xcodebuild_cache:
+    description: Should we cache after Xcode build? Defaults to true
+    type: boolean
+    default: true
   # For macos executor
   node_version:
     description: The version of Node to use. This can be either a major version ("8"), a major and minor ("8.4"), or a fully qualified version ("8.4.1").
     type: string
-    default: '12'
+    default: "12"
+  homebrew_cache:
+    description: Should we cache after brew install? Defaults to true
+    type: boolean
+    default: true
 
 steps:
   - when:
@@ -65,8 +77,10 @@ steps:
         - attach_workspace:
             at: <<parameters.workspace_root>>
   - setup_macos_executor:
-        node_version: <<parameters.node_version>>
-  - yarn_install
+      node_version: <<parameters.node_version>>
+      homebrew_cache: <<parameters.homebrew_cache>>
+  - yarn_install:
+      cache: <<parameters.yarn_cache>>
   - when:
       condition: <<parameters.on_after_initialize>>
       steps:
@@ -84,3 +98,4 @@ steps:
       build_configuration: <<parameters.build_configuration>>
       scheme: <<parameters.scheme>>
       project_type: <<parameters.project_type>>
+      cache: <<parameters.xcodebuild_cache>>

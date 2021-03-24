@@ -5,6 +5,10 @@ parameters:
     description: The version of Node to use. This can be either a major version ("8"), a major and minor ("8.4"), or a fully qualified version ("8.4.1").
     type: string
     default: "12"
+  homebrew_cache:
+    description: Should we cache after brew install? Defaults to true
+    type: boolean
+    default: true
 
 steps:
   - run:
@@ -18,9 +22,12 @@ steps:
         echo 'export JAVA_HOME=$(/usr/libexec/java_home)' >> $BASH_ENV
         source $BASH_ENV
 
-  - restore_cache:
-      key: |
-        brew-cache-{{ arch }}-{{ .Environment.CACHE_VERSION }}
+  - when:
+      condition: <<parameters.homebrew_cache>>
+      steps:
+        - restore_cache:
+            key: |
+              brew-cache-{{ arch }}-{{ .Environment.CACHE_VERSION }}
 
   - run:
       name: Install node@<<parameters.node_version>>
@@ -48,9 +55,12 @@ steps:
         touch .watchmanconfig
         node -v
 
-  - save_cache:
-      paths:
-        - /usr/local/Homebrew
-        - ~/Library/Caches/Homebrew
-      key: |
-        brew-cache-{{ arch }}-{{ .Environment.CACHE_VERSION }}
+  - when:
+      condition: <<parameters.homebrew_cache>>
+      steps:
+        - save_cache:
+            paths:
+              - /usr/local/Homebrew
+              - ~/Library/Caches/Homebrew
+            key: |
+              brew-cache-{{ arch }}-{{ .Environment.CACHE_VERSION }}
