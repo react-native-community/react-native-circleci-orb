@@ -9,7 +9,7 @@ steps:
         find . -type f -name 'yarn.lock' -not -path "*node_modules*" -exec cat {} + >> ~/.tmp/checksumfiles/yarn.lock
   - restore_cache:
       keys:
-        - yarn-cache-{{ arch }}-{{ checksum "~/.tmp/checksumfiles/package.json" }}-{{ checksum "~/.tmp/checksumfiles/yarn.lock" }}-{{ .Environment.CACHE_VERSION }}
+        - yarn-cache-{{ arch }}-{{ .Branch }}-{{ checksum "~/.tmp/checksumfiles/package.json" }}-{{ checksum "~/.tmp/checksumfiles/yarn.lock" }}
   - run:
       name: Yarn Install
       command: yarn install --frozen-lockfile --non-interactive --cache-folder /tmp/yarn
@@ -17,4 +17,4 @@ steps:
       paths:
         - /tmp/yarn
       key: |
-        yarn-cache-{{ arch }}-{{ checksum "~/.tmp/checksumfiles/package.json" }}-{{ checksum "~/.tmp/checksumfiles/yarn.lock" }}-{{ .Environment.CACHE_VERSION }}
+        yarn-cache-{{ arch }}-{{ .Branch }}-{{ checksum "~/.tmp/checksumfiles/package.json" }}-{{ checksum "~/.tmp/checksumfiles/yarn.lock" }}
