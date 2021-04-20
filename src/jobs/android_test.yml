@@ -60,12 +60,17 @@ parameters:
     description: The version of Node to use. This can be either a major version ("8"), a major and minor ("8.4"), or a fully qualified version ("8.4.1").
     type: string
     default: "12"
+  homebrew_cache:
+    description: Should we cache after brew install? Defaults to true
+    type: boolean
+    default: true
 
 steps:
   - attach_workspace:
       at: <<parameters.workspace_root>>
   - setup_macos_executor:
       node_version: <<parameters.node_version>>
+      homebrew_cache: <<parameters.homebrew_cache>>
   - yarn_install:
       cache: <<parameters.yarn_cache>>
   - when:
