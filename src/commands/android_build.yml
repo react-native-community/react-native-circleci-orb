@@ -13,6 +13,10 @@ parameters:
     description: Save and restore the caches? Defaults to true
     type: boolean
     default: true
+  assemble_android_test:
+    description: Configure the android tests to run. Defaults to assembleAndroidTest but you might want to set to app:assembleAndroidTest if that works for your project
+    type: string
+    default: assembleAndroidTest
 
 steps:
   - when:
@@ -69,7 +73,7 @@ steps:
 
   - run:
       name: Build Android APK
-      command: "cd <<parameters.project_path>> && chmod +x gradlew && ./gradlew --build-cache --max-workers 2 --continue assemble<<parameters.build_type>> assembleAndroidTest -DtestBuildType=<<parameters.build_type>> --stacktrace"
+      command: "cd <<parameters.project_path>> && chmod +x gradlew && ./gradlew --build-cache --max-workers 2 --continue assemble<<parameters.build_type>> <<parameters.assemble_android_test>> -DtestBuildType=<<parameters.build_type>> --stacktrace"
 
   - when:
       condition: <<parameters.cache>>
