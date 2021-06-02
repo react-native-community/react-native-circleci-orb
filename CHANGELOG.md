@@ -1,3 +1,10 @@
+# [5.2.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v5.1.0...v5.2.0) (2021-06-02)
+
+
+### Features
+
+* add parameter to allow configuring the android tests on build ([0569d66](https://github.com/react-native-community/react-native-circleci-orb/commit/0569d66))
+
 # [5.1.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v5.0.0...v5.1.0) (2021-03-24)
 
 
