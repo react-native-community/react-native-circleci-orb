@@ -1,3 +1,11 @@
+# [5.3.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v5.2.0...v5.3.0) (2021-06-02)
+
+
+### Features
+
+* **android:** Add command to update the NDK to a given version ([#91](https://github.com/react-native-community/react-native-circleci-orb/issues/91) by @CHNB128) ([64eac35](https://github.com/react-native-community/react-native-circleci-orb/commit/64eac35))
+* **android:** Add hombrew cache param to android test job ([#96](https://github.com/react-native-community/react-native-circleci-orb/issues/96) by @Kyonru) ([8314b6e](https://github.com/react-native-community/react-native-circleci-orb/commit/8314b6e))
+
 # [5.2.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v5.1.0...v5.2.0) (2021-06-02)
 
 
