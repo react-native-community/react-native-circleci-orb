@@ -1,0 +1,11 @@
+description: Update Android NDK
+
+parameters:
+  version:
+    type: string
+    default: 22.1.7171670
+
+steps:
+  - run:
+      name: Update Android NDK
+      command: sdkmanager "ndk;<<parameters.version>>"
