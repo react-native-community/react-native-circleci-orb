@@ -28,6 +28,10 @@ parameters:
     description: Should we cache after yarn install? Defaults to true
     type: boolean
     default: true
+  yarn_cache_folder:
+    description: The path to the yarn cache folder
+    type: string
+    default: "/tmp/yarn"
   # For the iOS build command
   project_type:
     description: If the iOS app is built using a project file (*.xcodeproj) or a workspace.
@@ -101,6 +105,7 @@ steps:
       device: <<parameters.device>>
   - yarn_install:
       cache: <<parameters.yarn_cache>>
+      cache_folder: <<parameters.yarn_cache_folder>>
   - when:
       condition: <<parameters.on_after_initialize>>
       steps:
