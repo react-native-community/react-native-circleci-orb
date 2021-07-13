@@ -5,6 +5,10 @@ parameters:
     description: Save and restore the build cache? Defaults to true
     type: boolean
     default: true
+  cache_folder:
+    description: The path to the yarn cache folder.  Defaults to /tmp/yarn
+    type: string
+    default: "/tmp/yarn"
 
 steps:
   - when:
@@ -21,12 +25,12 @@ steps:
               - yarn-cache-{{ arch }}-{{ checksum "~/.tmp/checksumfiles/package.json" }}-{{ checksum "~/.tmp/checksumfiles/yarn.lock" }}-{{ .Environment.CACHE_VERSION }}
   - run:
       name: Yarn Install
-      command: yarn install --frozen-lockfile --non-interactive --cache-folder /tmp/yarn
+      command: "yarn install --frozen-lockfile --non-interactive --cache-folder <<parameters.cache_folder>>"
   - when:
       condition: <<parameters.cache>>
       steps:
         - save_cache:
             paths:
-              - /tmp/yarn
+              - <<parameters.cache_folder>>
             key: |
               yarn-cache-{{ arch }}-{{ checksum "~/.tmp/checksumfiles/package.json" }}-{{ checksum "~/.tmp/checksumfiles/yarn.lock" }}-{{ .Environment.CACHE_VERSION }}
