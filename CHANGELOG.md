@@ -1,3 +1,10 @@
+# [5.4.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v5.3.0...v5.4.0) (2021-07-13)
+
+
+### Features
+
+* Make yarn cache folder configurable ([#103](https://github.com/react-native-community/react-native-circleci-orb/issues/103) by [@ronwsmith](https://github.com/ronwsmith)) ([c6ccaa1](https://github.com/react-native-community/react-native-circleci-orb/commit/c6ccaa1))
+
 # [5.3.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v5.2.0...v5.3.0) (2021-06-02)
 
 
