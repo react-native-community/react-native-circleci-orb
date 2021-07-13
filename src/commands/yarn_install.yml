@@ -32,5 +32,6 @@ steps:
         - save_cache:
             paths:
               - <<parameters.cache_folder>>
+              - node_modules
             key: |
               yarn-cache-{{ arch }}-{{ checksum "~/.tmp/checksumfiles/package.json" }}-{{ checksum "~/.tmp/checksumfiles/yarn.lock" }}-{{ .Environment.CACHE_VERSION }}
