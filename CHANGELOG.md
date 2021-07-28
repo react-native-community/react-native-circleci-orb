@@ -1,3 +1,10 @@
+# [5.5.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v5.4.0...v5.5.0) (2021-07-28)
+
+
+### Features
+
+* **Android:** Add optional command-running step after the emulator starts ([#110](https://github.com/react-native-community/react-native-circleci-orb/issues/110) by [@ronwsmith](https://github.com/ronwsmith)) ([5ee8a30](https://github.com/react-native-community/react-native-circleci-orb/commit/5ee8a30))
+
 # [5.4.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v5.3.0...v5.4.0) (2021-07-13)
 
 
