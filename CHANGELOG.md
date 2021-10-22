@@ -1,3 +1,10 @@
+## [5.5.1](https://github.com/react-native-community/react-native-circleci-orb/compare/v5.5.0...v5.5.1) (2021-10-22)
+
+
+### Bug Fixes
+
+* **android:** Added new Android Command Line Tools for MacOS 12+ and Java 9, 10, 11 ([#114](https://github.com/react-native-community/react-native-circleci-orb/issues/114) by [@lukebrandonfarrell](https://github.com/lukebrandonfarrell)) ([aeb45fe](https://github.com/react-native-community/react-native-circleci-orb/commit/aeb45fe))
+
 # [5.5.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v5.4.0...v5.5.0) (2021-07-28)
 
 
