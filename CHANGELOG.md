@@ -1,3 +1,10 @@
+# [5.6.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v5.5.1...v5.6.0) (2021-10-22)
+
+
+### Features
+
+* **android:** Pass through the `assemble_android_test` parameter from the `android_build` job to the command ([#109](https://github.com/react-native-community/react-native-circleci-orb/issues/109) by [@ronwsmith](https://github.com/ronwsmith)) ([9f2e7fa](https://github.com/react-native-community/react-native-circleci-orb/commit/9f2e7fa))
+
 ## [5.5.1](https://github.com/react-native-community/react-native-circleci-orb/compare/v5.5.0...v5.5.1) (2021-10-22)
 
 
