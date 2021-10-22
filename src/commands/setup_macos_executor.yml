@@ -15,8 +15,8 @@ steps:
       name: Configure Environment Variables
       command: |
         echo 'export PATH="$PATH:/usr/local/opt/node@<<parameters.node_version>>/bin:~/.yarn/bin:~/project/node_modules/.bin:~/project/example/node_modules/.bin"' >> $BASH_ENV
-        echo 'export ANDROID_HOME="/usr/local/share/android-sdk"' >> $BASH_ENV
-        echo 'export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"' >> $BASH_ENV
+        echo 'export ANDROID_HOME="/usr/local/share/android-commandlinetools"' >> $BASH_ENV
+        echo 'export ANDROID_SDK_ROOT="/usr/local/share/android-commandlinetools"' >> $BASH_ENV
         echo 'export PATH="$ANDROID_SDK_ROOT/emulator:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH"' >> $BASH_ENV
         echo 'export QEMU_AUDIO_DRV=none' >> $BASH_ENV
         echo 'export JAVA_HOME=$(/usr/libexec/java_home)' >> $BASH_ENV
@@ -48,10 +48,11 @@ steps:
   - run:
       name: Configure Detox Environment
       command: |
+        brew update >/dev/null
         HOMEBREW_NO_AUTO_UPDATE=1 brew tap wix/brew >/dev/null
         HOMEBREW_NO_AUTO_UPDATE=1 brew tap homebrew/cask >/dev/null
         HOMEBREW_NO_AUTO_UPDATE=1 brew install applesimutils >/dev/null
-        HOMEBREW_NO_AUTO_UPDATE=1 brew install --cask android-sdk >/dev/null
+        HOMEBREW_NO_AUTO_UPDATE=1 brew install android-commandlinetools >/dev/null
         touch .watchmanconfig
         node -v
 
