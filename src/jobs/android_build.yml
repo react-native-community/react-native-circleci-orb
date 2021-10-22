@@ -28,6 +28,10 @@ parameters:
     description: Should we cache after yarn install? Defaults to true
     type: boolean
     default: true
+  on_after_initialize:
+    description: A custom command to run right after yarn install.
+    type: string
+    default: ""
   # For the build command
   project_path:
     description: The path to the root of the Android project you want to build, relative to the root of the repository.
@@ -37,14 +41,14 @@ parameters:
     description: The build type to build. This is normally either "debug" or "release" but you may have custom build types configured for your app.
     type: string
     default: "debug"
-  on_after_initialize:
-    description: A custom command to run right after yarn install.
-    type: string
-    default: ""
   build_cache:
     description: Should we cache after Gradle build? Defaults to true
     type: boolean
     default: true
+  assemble_android_test:
+    description: Configure the android tests to run. Defaults to assembleAndroidTest
+    type: string
+    default: assembleAndroidTest
 
 steps:
   - when:
@@ -68,6 +72,7 @@ steps:
       project_path: <<parameters.project_path>>
       build_type: <<parameters.build_type>>
       cache: <<parameters.build_cache>>
+      assemble_android_test: <<parameters.assemble_android_test>>
   - when:
       condition: <<parameters.persist_to_workspace>>
       steps:
