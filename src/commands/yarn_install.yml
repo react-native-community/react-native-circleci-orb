@@ -16,7 +16,7 @@ parameters:
 
 steps:
   - when:
-      condition: <<parameters.berry>
+      condition: <<parameters.berry>>
       steps:
         - run:
             name: Set yarn version to berry
