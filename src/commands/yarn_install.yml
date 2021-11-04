@@ -9,8 +9,18 @@ parameters:
     description: The path to the yarn cache folder.  Defaults to /tmp/yarn
     type: string
     default: "/tmp/yarn"
+  berry:
+    description: use yarn 2+ version for installing dependencies
+    type: boolean
+    default: false
 
 steps:
+  - when:
+      condition: <<parameters.berry>
+      steps:
+        - run:
+            name: Set yarn version to berry
+            command: yarn set version berry
   - when:
       condition: <<parameters.cache>>
       steps:
