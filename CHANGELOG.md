@@ -1,3 +1,10 @@
+## [5.6.1](https://github.com/react-native-community/react-native-circleci-orb/compare/v5.6.0...v5.6.1) (2021-11-19)
+
+
+### Bug Fixes
+
+* do not cache /usr/local/Homebrew ([#119](https://github.com/react-native-community/react-native-circleci-orb/issues/119)) ([597e597](https://github.com/react-native-community/react-native-circleci-orb/commit/597e597))
+
 # [5.6.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v5.5.1...v5.6.0) (2021-10-22)
 
 
