@@ -1,3 +1,18 @@
+# [6.0.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v5.6.2...v6.0.0) (2021-11-19)
+
+
+### Bug Fixes
+
+* **android:** use JDK11 compatible JVM options ([#122](https://github.com/react-native-community/react-native-circleci-orb/issues/122)) ([1923bcd](https://github.com/react-native-community/react-native-circleci-orb/commit/1923bcd)), closes [#120](https://github.com/react-native-community/react-native-circleci-orb/issues/120)
+
+
+### BREAKING CHANGES
+
+* **android:** this orb is now using JDK11
+
+See JDK8-->JDK11 migration notes here:
+https://discuss.circleci.com/t/android-convenience-image-moving-to-java-v11-on-august-17th/36601/4
+
 ## [5.6.2](https://github.com/react-native-community/react-native-circleci-orb/compare/v5.6.1...v5.6.2) (2021-11-19)
 
 
