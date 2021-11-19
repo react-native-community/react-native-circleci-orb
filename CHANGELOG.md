@@ -1,3 +1,10 @@
+## [5.6.2](https://github.com/react-native-community/react-native-circleci-orb/compare/v5.6.1...v5.6.2) (2021-11-19)
+
+
+### Bug Fixes
+
+* **android:** pin docker image to 4.2 for JDK8 ([#121](https://github.com/react-native-community/react-native-circleci-orb/issues/121)) ([fe2898a](https://github.com/react-native-community/react-native-circleci-orb/commit/fe2898a)), closes [#120](https://github.com/react-native-community/react-native-circleci-orb/issues/120)
+
 ## [5.6.1](https://github.com/react-native-community/react-native-circleci-orb/compare/v5.6.0...v5.6.1) (2021-11-19)
 
 
