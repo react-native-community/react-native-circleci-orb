@@ -1,3 +1,10 @@
+## [6.0.1](https://github.com/react-native-community/react-native-circleci-orb/compare/v6.0.0...v6.0.1) (2021-11-19)
+
+
+### Bug Fixes
+
+* **android:** move docker android pin to JDK11 version ([#123](https://github.com/react-native-community/react-native-circleci-orb/issues/123)) ([d74d427](https://github.com/react-native-community/react-native-circleci-orb/commit/d74d427)), closes [#122](https://github.com/react-native-community/react-native-circleci-orb/issues/122)
+
 # [6.0.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v5.6.2...v6.0.0) (2021-11-19)
 
 
