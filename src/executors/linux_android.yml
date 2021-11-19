@@ -12,7 +12,7 @@ parameters:
     type: string
     default: medium
 docker:
-  - image: reactnativecommunity/react-native-android:4.2
+  - image: reactnativecommunity/react-native-android:5.1
 resource_class: <<parameters.resource_class>>
 environment:
   - _JAVA_OPTIONS: <<parameters.java_options>>
