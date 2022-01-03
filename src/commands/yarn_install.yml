@@ -9,6 +9,9 @@ parameters:
     description: The path to the yarn cache folder.  Defaults to /tmp/yarn
     type: string
     default: "/tmp/yarn"
+  yarn_install_directory:
+    description: The working directory to run install at. Defaults to currenct directory
+    type: string
 
 steps:
   - when:
@@ -25,7 +28,7 @@ steps:
               - yarn-cache-{{ arch }}-{{ checksum "~/.tmp/checksumfiles/package.json" }}-{{ checksum "~/.tmp/checksumfiles/yarn.lock" }}-{{ .Environment.CACHE_VERSION }}
   - run:
       name: Yarn Install
-      command: "yarn install --frozen-lockfile --non-interactive --cache-folder <<parameters.cache_folder>>"
+      command: "yarn --cwd <<parameters.yarn_install_directory>> install --frozen-lockfile --non-interactive --cache-folder <<parameters.cache_folder>>"
   - when:
       condition: <<parameters.cache>>
       steps:
