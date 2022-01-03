@@ -10,8 +10,9 @@ parameters:
     type: string
     default: "/tmp/yarn"
   yarn_install_directory:
-    description: The working directory to run install at. Defaults to currenct directory
+    description: The working directory to run install at. Defaults to current directory
     type: string
+    default: ""
 
 steps:
   - when:
