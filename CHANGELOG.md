@@ -1,3 +1,10 @@
+# [6.1.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v6.0.1...v6.1.0) (2022-01-04)
+
+
+### Features
+
+* add optional yarn_install_directory parameter ([#124](https://github.com/react-native-community/react-native-circleci-orb/issues/124)) ([3c659f9](https://github.com/react-native-community/react-native-circleci-orb/commit/3c659f9))
+
 ## [6.0.1](https://github.com/react-native-community/react-native-circleci-orb/compare/v6.0.0...v6.0.1) (2021-11-19)
 
 
