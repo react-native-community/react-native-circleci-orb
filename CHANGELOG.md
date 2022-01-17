@@ -1,3 +1,10 @@
+# [6.2.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v6.1.0...v6.2.0) (2022-01-17)
+
+
+### Features
+
+* **ios:** control if simulator starts in background ([#126](https://github.com/react-native-community/react-native-circleci-orb/issues/126)) ([08338f9](https://github.com/react-native-community/react-native-circleci-orb/commit/08338f9))
+
 # [6.1.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v6.0.1...v6.1.0) (2022-01-04)
 
 
