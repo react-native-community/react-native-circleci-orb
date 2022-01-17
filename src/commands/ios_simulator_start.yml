@@ -5,9 +5,13 @@ parameters:
     description: The type of device you want to start.
     type: string
     default: "iPhone X"
+  background:
+    default: true
+    description: Should ios simulator boot in background?
+    type: boolean
 
 steps:
   - run:
       name: Start iOS simulator (background)
-      background: true
+      background: <<parameters.background>>
       command: xcrun simctl boot "<<parameters.device>>" || true
