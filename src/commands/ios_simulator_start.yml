@@ -4,7 +4,7 @@ parameters:
   device:
     description: The type of device you want to start.
     type: string
-    default: "iPhone X"
+    default: "iPhone 11"
   background:
     default: true
     description: Should ios simulator boot in background?
