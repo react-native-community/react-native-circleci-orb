@@ -48,7 +48,7 @@ parameters:
   device:
     description: The type of device you want to build for.
     type: string
-    default: "iPhone X"
+    default: "iPhone 11"
   scheme:
     description: The scheme to use.
     type: string

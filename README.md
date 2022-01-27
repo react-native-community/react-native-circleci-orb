@@ -121,7 +121,7 @@ workflows:
       - rn/ios_build:
           name: build_ios_release
           project_path: ios/Example.xcodeproj
-          device: "iPhone X"
+          device: "iPhone 11"
           build_configuration: Release
           scheme: Example
           requires:
@@ -130,7 +130,7 @@ workflows:
       # Build and test the iOS app in release mode
       - rn/ios_build_and_test:
           project_path: "ios/Example.xcodeproj"
-          device: "iPhone X"
+          device: "iPhone 11"
           build_configuration: "Release"
           scheme: "Example"
           detox_configuration: "ios.sim.release"

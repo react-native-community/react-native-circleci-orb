@@ -91,7 +91,7 @@ usage:
             name: build_ios_release
             node_version: '12'
             project_path: ios/Example.xcodeproj
-            device: "iPhone X"
+            device: "iPhone 11"
             build_configuration: Release
             scheme: Example
             requires:
@@ -101,7 +101,7 @@ usage:
         - rn/ios_build_and_test:
             node_version: '12'
             project_path: "ios/Example.xcodeproj"
-            device: "iPhone X"
+            device: "iPhone 11"
             build_configuration: "Release"
             scheme: "Example"
             detox_configuration: "ios.sim.release"
