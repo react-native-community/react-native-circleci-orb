@@ -1,3 +1,10 @@
+## [6.2.1](https://github.com/react-native-community/react-native-circleci-orb/compare/v6.2.0...v6.2.1) (2022-01-27)
+
+
+### Bug Fixes
+
+* **ios:** update default ios device to iPhone 11 ([#127](https://github.com/react-native-community/react-native-circleci-orb/issues/127)) ([2e3b1e0](https://github.com/react-native-community/react-native-circleci-orb/commit/2e3b1e0))
+
 # [6.2.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v6.1.0...v6.2.0) (2022-01-17)
 
 
