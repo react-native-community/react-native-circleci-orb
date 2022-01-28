@@ -23,7 +23,7 @@ parameters:
   pod_install_directory:
     type: string
     default: ""
-    description: The location of the "ios" directory for `pod install`
+    description: The location of the "ios" directory for `pod install`. Will skip `pod install` if missing.
   yarn_cache:
     description: Should we cache after yarn install? Defaults to true
     type: boolean
