@@ -1,3 +1,10 @@
+## [6.2.2](https://github.com/react-native-community/react-native-circleci-orb/compare/v6.2.1...v6.2.2) (2022-01-28)
+
+
+### Bug Fixes
+
+* **android:** fix gradle build cache key ([#130](https://github.com/react-native-community/react-native-circleci-orb/issues/130) by [@fotos](https://github.com/fotos)) ([acadf02](https://github.com/react-native-community/react-native-circleci-orb/commit/acadf02))
+
 ## [6.2.1](https://github.com/react-native-community/react-native-circleci-orb/compare/v6.2.0...v6.2.1) (2022-01-27)
 
 
