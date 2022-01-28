@@ -69,6 +69,10 @@ parameters:
     description: Should we cache after brew install? Defaults to true
     type: boolean
     default: true
+  homebrew_update:
+    description: Should we run brew update? Defaults to true
+    type: boolean
+    default: true
 
 steps:
   - when:
@@ -83,6 +87,7 @@ steps:
   - setup_macos_executor:
       node_version: <<parameters.node_version>>
       homebrew_cache: <<parameters.homebrew_cache>>
+      homebrew_update: <<parameters.homebrew_update>>
   - yarn_install:
       cache: <<parameters.yarn_cache>>
       cache_folder: <<parameters.yarn_cache_folder>>
