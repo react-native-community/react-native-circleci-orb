@@ -92,5 +92,5 @@ steps:
             name: Saving Gradle Build caches
             paths:
               - ~/gradle-build-caches
-            key: gradle-debug-build-cache-{{ .Revision }}
+            key: gradle-build-cache-{{ .Revision }}
             when: always
