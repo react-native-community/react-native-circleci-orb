@@ -9,6 +9,10 @@ parameters:
     description: Should we cache after brew install? Defaults to true
     type: boolean
     default: true
+  homebrew_update:
+    description: Should we run brew update? Defaults to true
+    type: boolean
+    default: true
 
 steps:
   - run:
@@ -45,9 +49,12 @@ steps:
       name: Verify node version
       command: node --version
 
-  - run:
-      name: Update brew
-      command: brew update >/dev/null
+  - when:
+      condition: <<parameters.homebrew_update>>
+      steps:
+        - run:
+            name: Update brew
+            command: brew update >/dev/null
 
   - run:
       name: Configure Detox Environment
