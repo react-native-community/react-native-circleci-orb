@@ -9,6 +9,10 @@ parameters:
     description: Should we cache after brew install? Defaults to true
     type: boolean
     default: true
+  homebrew_update:
+    description: Should we run brew update? Defaults to true
+    type: boolean
+    default: true
 
 steps:
   - run:
@@ -45,10 +49,16 @@ steps:
       name: Verify node version
       command: node --version
 
+  - when:
+      condition: <<parameters.homebrew_update>>
+      steps:
+        - run:
+            name: Update brew
+            command: brew update >/dev/null
+
   - run:
       name: Configure Detox Environment
       command: |
-        brew update >/dev/null
         HOMEBREW_NO_AUTO_UPDATE=1 brew tap wix/brew >/dev/null
         HOMEBREW_NO_AUTO_UPDATE=1 brew tap homebrew/cask >/dev/null
         HOMEBREW_NO_AUTO_UPDATE=1 brew install applesimutils >/dev/null
