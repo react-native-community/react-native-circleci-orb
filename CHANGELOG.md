@@ -1,3 +1,10 @@
+# [6.3.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v6.2.2...v6.3.0) (2022-01-30)
+
+
+### Features
+
+* add homebrew_update parameter to toggle brew update ([#131](https://github.com/react-native-community/react-native-circleci-orb/issues/131)) ([6a7d635](https://github.com/react-native-community/react-native-circleci-orb/commit/6a7d635))
+
 ## [6.2.2](https://github.com/react-native-community/react-native-circleci-orb/compare/v6.2.1...v6.2.2) (2022-01-28)
 
 
