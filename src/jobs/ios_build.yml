@@ -86,8 +86,8 @@ steps:
             at: <<parameters.workspace_root>>
   - setup_macos_executor:
       node_version: <<parameters.node_version>>
-      homebrew_cache: <<parameters.homebrew_cache>>
-      homebrew_update: <<parameters.homebrew_update>>
+      android: false
+      detox: false
   - yarn_install:
       cache: <<parameters.yarn_cache>>
       cache_folder: <<parameters.yarn_cache_folder>>

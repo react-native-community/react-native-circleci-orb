@@ -13,6 +13,14 @@ parameters:
     description: Should we run brew update? Defaults to true
     type: boolean
     default: true
+  android:
+    description: Should we set up the Android build environment? Defaults to true
+    type: boolean
+    default: true
+  detox:
+    description: Should we set up Detox? Defaults to true
+    type: boolean
+    default: true
 
 steps:
   - run:
@@ -27,7 +35,12 @@ steps:
         source $BASH_ENV
 
   - when:
-      condition: <<parameters.homebrew_cache>>
+      condition:
+        and:
+          - <<parameters.homebrew_cache>>
+          - or:
+              - <<parameters.android>>
+              - <<parameters.detox>>
       steps:
         - restore_cache:
             key: |
@@ -50,24 +63,42 @@ steps:
       command: node --version
 
   - when:
-      condition: <<parameters.homebrew_update>>
+      condition:
+        and:
+          - <<parameters.homebrew_update>>
+          - or:
+              - <<parameters.android>>
+              - <<parameters.detox>>
       steps:
         - run:
             name: Update brew
             command: brew update >/dev/null
 
-  - run:
-      name: Configure Detox Environment
-      command: |
-        HOMEBREW_NO_AUTO_UPDATE=1 brew tap wix/brew >/dev/null
-        HOMEBREW_NO_AUTO_UPDATE=1 brew tap homebrew/cask >/dev/null
-        HOMEBREW_NO_AUTO_UPDATE=1 brew install applesimutils >/dev/null
-        HOMEBREW_NO_AUTO_UPDATE=1 brew install android-commandlinetools >/dev/null
-        touch .watchmanconfig
-        node -v
+  - when:
+      condition: <<parameters.android>>
+      steps:
+        run:
+          name: Configure Android Build Environment
+          command: |
+            HOMEBREW_NO_AUTO_UPDATE=1 brew tap homebrew/cask >/dev/null
+            HOMEBREW_NO_AUTO_UPDATE=1 brew install android-commandlinetools >/dev/null
 
   - when:
-      condition: <<parameters.homebrew_cache>>
+      condition: <<parameters.detox>>
+      steps:
+        run:
+          name: Configure Detox Environment
+          command: |
+            HOMEBREW_NO_AUTO_UPDATE=1 brew tap wix/brew >/dev/null
+            HOMEBREW_NO_AUTO_UPDATE=1 brew install applesimutils >/dev/null
+
+  - when:
+      condition:
+        and:
+          - <<parameters.homebrew_cache>>
+          - or:
+              - <<parameters.android>>
+              - <<parameters.detox>>
       steps:
         - save_cache:
             paths:
