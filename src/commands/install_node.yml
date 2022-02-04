@@ -1,0 +1,33 @@
+description: >
+  Installs NodeJS on the MacOS executor, needed for all builds on MacOS
+  executors. You need to run this before running any other command on those
+  executors.
+
+parameters:
+  node_version:
+    description: The version of Node to use. This can be either a major version ("8"), a major and minor ("8.4"), or a fully qualified version ("8.4.1").
+    type: string
+    default: "12"
+
+steps:
+  - run:
+      name: Configure Environment Variables
+      command: |
+        echo 'export PATH="$PATH:/usr/local/opt/node@<<parameters.node_version>>/bin:~/.yarn/bin:~/project/node_modules/.bin:~/project/example/node_modules/.bin"' >> $BASH_ENV
+
+  - run:
+      name: Install node@<<parameters.node_version>>
+      # after `curl`, bashrc contains the script to load nvm, we need to source it to use it
+      command: |
+        set +e
+        curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh | bash
+        echo 'export NVM_DIR=$HOME/.nvm' >> $BASH_ENV
+        echo 'source $NVM_DIR/nvm.sh' >> $BASH_ENV
+        source ~/.bashrc
+        command -v nvm
+        nvm install <<parameters.node_version>>
+        nvm alias default <<parameters.node_version>>
+
+  - run:
+      name: Verify node version
+      command: node --version

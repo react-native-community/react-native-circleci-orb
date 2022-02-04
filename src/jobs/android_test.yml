@@ -80,8 +80,9 @@ parameters:
 steps:
   - attach_workspace:
       at: <<parameters.workspace_root>>
-  - setup_macos_executor:
+  - install_node:
       node_version: <<parameters.node_version>>
+  - install_detox:
       homebrew_cache: <<parameters.homebrew_cache>>
       homebrew_update: <<parameters.homebrew_update>>
   - yarn_install:
