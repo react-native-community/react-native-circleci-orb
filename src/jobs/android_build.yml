@@ -1,7 +1,5 @@
 description: Builds the Android app at the given path with the given build types.
 
-executor: linux_android
-
 parameters:
   # For this job
   checkout:
@@ -49,6 +47,24 @@ parameters:
     description: Configure the android tests to run. Defaults to assembleAndroidTest
     type: string
     default: assembleAndroidTest
+  java_options:
+    description: Java command options. Note that setting this will override the default options so you might need to supply those as well.
+    type: string
+    default: '-Xmx1024m -XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport'
+  gradle_options:
+    description: Gradle command options. Note that setting this will override the default options so you might need to supply those as well.
+    type: string
+    default: '-Xmx2014m -Dorg.gradle.daemon=false -Dorg.gradle.jvmargs="-XX:+UnlockExperimentalVMOptions -XX:+HeapDumpOnOutOfMemoryError"'
+  resource_class:
+    description: Changes the resource class of the executor. Requires a support request to enable the resource_class parameter. See https://circleci.com/docs/2.0/configuration-reference/#resource_class
+    type: string
+    default: medium
+
+executor:
+  name: linux_android
+  java_options: <<parameters.java_options>>
+  gradle_options: <<parameters.gradle_options>>
+  resource_class: <<parameters.resource_class>>
 
 steps:
   - when:
