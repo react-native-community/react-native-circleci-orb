@@ -24,6 +24,10 @@ parameters:
     type: string
     default: ""
     description: The location of the "ios" directory for `pod install`. Will skip `pod install` if missing.
+  pod_cache:
+    description: Save and restore the CocoaPods cache? Defaults to true
+    type: boolean
+    default: true
   yarn_cache:
     description: Should we cache after yarn install? Defaults to true
     type: boolean
@@ -126,6 +130,7 @@ steps:
       steps:
         - pod_install:
             pod_install_directory: <<parameters.pod_install_directory>>
+            cache: <<parameters.pod_cache>>
   - ios_build:
       project_path: <<parameters.project_path>>
       derived_data_path: <<parameters.derived_data_path>>
