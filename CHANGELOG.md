@@ -1,3 +1,10 @@
+# [6.4.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v6.3.0...v6.4.0) (2022-02-14)
+
+
+### Features
+
+* pass through pod cache param from job to command ([#138](https://github.com/react-native-community/react-native-circleci-orb/issues/138)) ([b156c1b](https://github.com/react-native-community/react-native-circleci-orb/commit/b156c1b))
+
 # [6.3.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v6.2.2...v6.3.0) (2022-01-30)
 
 
