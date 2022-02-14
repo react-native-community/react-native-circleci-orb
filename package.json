@@ -1,6 +1,6 @@
 {
   "name": "@react-native-community/circleci-orb",
-  "version": "6.4.0",
+  "version": "6.5.0",
   "private": true,
   "description": "A CircleCI Orb which can be used to simplify building and testing React Native apps.",
   "scripts": {

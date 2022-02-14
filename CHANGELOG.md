@@ -1,3 +1,10 @@
+# [6.5.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v6.4.0...v6.5.0) (2022-02-14)
+
+
+### Features
+
+* allow passing pod_install_directory during ios_build job ([#136](https://github.com/react-native-community/react-native-circleci-orb/issues/136)) ([faa7a01](https://github.com/react-native-community/react-native-circleci-orb/commit/faa7a01))
+
 # [6.4.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v6.3.0...v6.4.0) (2022-02-14)
 
 
