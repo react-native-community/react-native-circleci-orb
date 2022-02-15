@@ -1,3 +1,10 @@
+# [6.7.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v6.6.0...v6.7.0) (2022-02-15)
+
+
+### Features
+
+* add pod_cache param to ios_build job ([#140](https://github.com/react-native-community/react-native-circleci-orb/issues/140)) ([f18183f](https://github.com/react-native-community/react-native-circleci-orb/commit/f18183f))
+
 # [6.6.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v6.5.0...v6.6.0) (2022-02-14)
 
 
