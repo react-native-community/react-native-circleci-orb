@@ -1,3 +1,10 @@
+# [6.8.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v6.7.0...v6.8.0) (2022-02-15)
+
+
+### Features
+
+* allow passing executor parameters to test jobs ([#141](https://github.com/react-native-community/react-native-circleci-orb/issues/141)) ([eea6098](https://github.com/react-native-community/react-native-circleci-orb/commit/eea6098)), closes [#112](https://github.com/react-native-community/react-native-circleci-orb/issues/112)
+
 # [6.7.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v6.6.0...v6.7.0) (2022-02-15)
 
 
