@@ -1,7 +1,5 @@
 description: Tests the Android app on the given device, with the given Detox configuration. You should have already built the correct Android APK (including the androidTest APK) and have both persisted to the worksapce.
 
-executor: macos
-
 parameters:
   # For this job
   workspace_root:
@@ -76,6 +74,19 @@ parameters:
     description: Should we run brew update? Defaults to true
     type: boolean
     default: true
+  xcode_version:
+    description: The version of Xcode to use. See here for the list of supported versions https://circleci.com/docs/2.0/testing-ios/#supported-xcode-versions
+    type: string
+    default: "12.4.0"
+  resource_class:
+    description: Changes the resource class of the executor. Requires a support request to enable the resource_class parameter. See https://circleci.com/docs/2.0/configuration-reference/#resource_class
+    type: string
+    default: medium
+
+executor:
+  name: macos
+  xcode_version: <<parameters.xcode_version>>
+  resource_class: <<parameters.resource_class>>
 
 steps:
   - attach_workspace:
