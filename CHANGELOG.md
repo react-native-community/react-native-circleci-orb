@@ -1,3 +1,11 @@
+## [6.8.1](https://github.com/react-native-community/react-native-circleci-orb/compare/v6.8.0...v6.8.1) (2022-02-27)
+
+
+### Bug Fixes
+
+* add missing CACHE_VERSION in pod_install ([b6c7e99](https://github.com/react-native-community/react-native-circleci-orb/commit/b6c7e99))
+* quote cache keys that start with special characters ([b217d8c](https://github.com/react-native-community/react-native-circleci-orb/commit/b217d8c))
+
 # [6.8.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v6.7.0...v6.8.0) (2022-02-15)
 
 
