@@ -8,7 +8,7 @@ parameters:
     type: string
     default: medium
 docker:
-  - image: circleci/node:<<parameters.node_version>>
+  - image: cimg/node:<<parameters.node_version>>
 resource_class: <<parameters.resource_class>>
 environment:
   - PATH: '/opt/yarn/yarn-v1.5.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
