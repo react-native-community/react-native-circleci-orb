@@ -22,8 +22,6 @@ jobs:
   publish:
     docker:
       - image: cimg/node:12.22
-    environment:
-      - PATH: '~/bin:/opt/yarn/yarn-v1.5.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
     steps:
       - attach_workspace:
           at: .
