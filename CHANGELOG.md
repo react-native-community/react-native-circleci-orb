@@ -1,3 +1,18 @@
+# [7.0.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v6.8.1...v7.0.0) (2022-04-26)
+
+
+### Bug Fixes
+
+* removing old yarn version from PATH which hopefully fixes the issue ([cc25fff](https://github.com/react-native-community/react-native-circleci-orb/commit/cc25fff))
+
+
+* fix!: using supported Node version with cimg/node and updating comments ([1186c41](https://github.com/react-native-community/react-native-circleci-orb/commit/1186c41))
+
+
+### BREAKING CHANGES
+
+* cimg/node doesn't support major Node version aliases the same way circleci/node did
+
 ## [6.8.1](https://github.com/react-native-community/react-native-circleci-orb/compare/v6.8.0...v6.8.1) (2022-02-27)
 
 
