@@ -1,3 +1,10 @@
+## [7.0.1](https://github.com/react-native-community/react-native-circleci-orb/compare/v7.0.0...v7.0.1) (2022-06-10)
+
+
+### Bug Fixes
+
+* 'an unexpected storage error occurred' on multiline keys ([b9fb1bb](https://github.com/react-native-community/react-native-circleci-orb/commit/b9fb1bb))
+
 # [7.0.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v6.8.1...v7.0.0) (2022-04-26)
 
 
