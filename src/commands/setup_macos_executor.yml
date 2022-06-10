@@ -30,8 +30,7 @@ steps:
       condition: <<parameters.homebrew_cache>>
       steps:
         - restore_cache:
-            key: |
-              brew-cache-{{ arch }}-{{ .Environment.CACHE_VERSION }}
+            key: brew-cache-{{ arch }}-{{ .Environment.CACHE_VERSION }}
 
   - run:
       name: Install node@<<parameters.node_version>>
@@ -72,5 +71,4 @@ steps:
         - save_cache:
             paths:
               - ~/Library/Caches/Homebrew
-            key: |
-              brew-cache-{{ arch }}-{{ .Environment.CACHE_VERSION }}
+            key: brew-cache-{{ arch }}-{{ .Environment.CACHE_VERSION }}
