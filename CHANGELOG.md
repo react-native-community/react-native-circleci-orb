@@ -1,3 +1,18 @@
+# [7.1.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v7.0.1...v7.1.0) (2022-06-18)
+
+
+### Bug Fixes
+
+* **android_test:** node v12 to v16 ([a9956b7](https://github.com/react-native-community/react-native-circleci-orb/commit/a9956b7))
+* **ios_build:** node v12 to v16 ([f0ea6b4](https://github.com/react-native-community/react-native-circleci-orb/commit/f0ea6b4))
+* **ios_build_and_test:** node v12 to v16 ([6347597](https://github.com/react-native-community/react-native-circleci-orb/commit/6347597))
+* **setup_macos_executor:** bump node v12 to v16 ([a34ccec](https://github.com/react-native-community/react-native-circleci-orb/commit/a34ccec))
+
+
+### Features
+
+* **node:** bump from node 12 to node 16 default ([0acc6f9](https://github.com/react-native-community/react-native-circleci-orb/commit/0acc6f9))
+
 ## [7.0.1](https://github.com/react-native-community/react-native-circleci-orb/compare/v7.0.0...v7.0.1) (2022-06-10)
 
 
