@@ -55,7 +55,7 @@ version: 2.1
 
 # Make sure you use the latest version of the Orb!
 orbs:
-  rn: react-native-community/react-native@2.0.1
+  rn: react-native-community/react-native@7.1.0
 
 # Custom jobs which are not part of the Orb
 jobs:
