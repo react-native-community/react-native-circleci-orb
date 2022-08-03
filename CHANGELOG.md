@@ -1,3 +1,10 @@
+## [7.1.1](https://github.com/react-native-community/react-native-circleci-orb/compare/v7.1.0...v7.1.1) (2022-08-03)
+
+
+### Bug Fixes
+
+* update XCode version to 12.5.1 ([#158](https://github.com/react-native-community/react-native-circleci-orb/issues/158)) ([4bbdb75](https://github.com/react-native-community/react-native-circleci-orb/commit/4bbdb75))
+
 # [7.1.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v7.0.1...v7.1.0) (2022-06-18)
 
 
