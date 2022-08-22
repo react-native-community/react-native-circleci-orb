@@ -3,6 +3,7 @@ version: 2.1
 orbs:
   cli: circleci/circleci-cli@0.1.2
   orb-tools: circleci/orb-tools@2
+  shellcheck: circleci/shellcheck@3.1
 
 jobs:
   pack:
