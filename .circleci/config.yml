@@ -53,6 +53,9 @@ jobs:
 workflows:
   btd:
     jobs:
+      - shellcheck/check:
+          dir: ./src
+
       - pack
 
       - orb-tools/publish:
