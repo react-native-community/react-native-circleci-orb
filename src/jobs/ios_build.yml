@@ -88,6 +88,8 @@ steps:
       node_version: <<parameters.node_version>>
       android: false
       detox: false
+      homebrew_update: <<parameters.homebrew_update>>
+      homebrew_cache: <<parameters.homebrew_cache>>
   - yarn_install:
       cache: <<parameters.yarn_cache>>
       cache_folder: <<parameters.yarn_cache_folder>>
