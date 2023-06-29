@@ -35,12 +35,7 @@ steps:
         source $BASH_ENV
 
   - when:
-      condition:
-        and:
-          - <<parameters.homebrew_cache>>
-          - or:
-              - <<parameters.android>>
-              - <<parameters.detox>>
+      condition: <<parameters.homebrew_cache>>
       steps:
         - restore_cache:
             key: |
@@ -63,12 +58,7 @@ steps:
       command: node --version
 
   - when:
-      condition:
-        and:
-          - <<parameters.homebrew_update>>
-          - or:
-              - <<parameters.android>>
-              - <<parameters.detox>>
+      condition: <<parameters.homebrew_update>>
       steps:
         - run:
             name: Update brew
@@ -93,12 +83,7 @@ steps:
             HOMEBREW_NO_AUTO_UPDATE=1 brew install applesimutils >/dev/null
 
   - when:
-      condition:
-        and:
-          - <<parameters.homebrew_cache>>
-          - or:
-              - <<parameters.android>>
-              - <<parameters.detox>>
+      condition: <<parameters.homebrew_cache>>
       steps:
         - save_cache:
             paths:
