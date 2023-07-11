@@ -1,3 +1,10 @@
+# [7.2.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v7.1.1...v7.2.0) (2023-07-11)
+
+
+### Features
+
+* Skip Detox setup in ios_build job ([3fc5c53](https://github.com/react-native-community/react-native-circleci-orb/commit/3fc5c53))
+
 ## [7.1.1](https://github.com/react-native-community/react-native-circleci-orb/compare/v7.1.0...v7.1.1) (2022-08-03)
 
 
