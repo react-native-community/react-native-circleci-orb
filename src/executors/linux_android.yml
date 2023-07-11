@@ -7,12 +7,16 @@ parameters:
     description: Gradle command options. Note that setting this will override the default options so you might need to supply those as well.
     type: string
     default: '-Xmx2014m -Dorg.gradle.daemon=false -Dorg.gradle.jvmargs="-XX:+UnlockExperimentalVMOptions -XX:+HeapDumpOnOutOfMemoryError"'
+  build_image_version:
+    description: React Native Android build image version. For available veresions, see https://hub.docker.com/r/reactnativecommunity/react-native-android/tags
+    type: string
+    default: 5.1
   resource_class:
     description: Changes the resource class of the executor. Requires a support request to enable the resource_class parameter. See https://circleci.com/docs/2.0/configuration-reference/#resource_class
     type: string
     default: medium
 docker:
-  - image: reactnativecommunity/react-native-android:5.1
+  - image: reactnativecommunity/react-native-android:<<parameters.build_image_version>>
 resource_class: <<parameters.resource_class>>
 environment:
   - _JAVA_OPTIONS: <<parameters.java_options>>
