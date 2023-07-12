@@ -1,3 +1,16 @@
+# [7.3.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v7.2.0...v7.3.0) (2023-07-12)
+
+
+### Bug Fixes
+
+* yaml parsing build_image_version default as double ([df23a73](https://github.com/react-native-community/react-native-circleci-orb/commit/df23a73))
+* yaml parsing build_image_version default as double ([#170](https://github.com/react-native-community/react-native-circleci-orb/issues/170)) ([3c8cb0f](https://github.com/react-native-community/react-native-circleci-orb/commit/3c8cb0f))
+
+
+### Features
+
+* allow specifying build image version for android build & executor ([ee50537](https://github.com/react-native-community/react-native-circleci-orb/commit/ee50537))
+
 # [7.2.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v7.1.1...v7.2.0) (2023-07-11)
 
 
