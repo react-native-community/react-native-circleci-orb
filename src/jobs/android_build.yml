@@ -47,10 +47,6 @@ parameters:
     description: Configure the android tests to run. Defaults to assembleAndroidTest
     type: string
     default: assembleAndroidTest
-  java_options:
-    description: Java command options. Note that setting this will override the default options so you might need to supply those as well.
-    type: string
-    default: '-Xmx1024m -XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport'
   gradle_options:
     description: Gradle command options. Note that setting this will override the default options so you might need to supply those as well.
     type: string
@@ -66,7 +62,6 @@ parameters:
 
 executor:
   name: linux_android
-  java_options: <<parameters.java_options>>
   gradle_options: <<parameters.gradle_options>>
   build_image_version: <<parameters.build_image_version>>
   resource_class: <<parameters.resource_class>>
