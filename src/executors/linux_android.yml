@@ -1,8 +1,4 @@
 parameters:
-  java_options:
-    description: Java command options. Note that setting this will override the default options so you might need to supply those as well.
-    type: string
-    default: '-Xmx1024m -XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport'
   gradle_options:
     description: Gradle command options. Note that setting this will override the default options so you might need to supply those as well.
     type: string
@@ -19,5 +15,4 @@ docker:
   - image: reactnativecommunity/react-native-android:<<parameters.build_image_version>>
 resource_class: <<parameters.resource_class>>
 environment:
-  - _JAVA_OPTIONS: <<parameters.java_options>>
   - GRADLE_OPTS: <<parameters.gradle_options>>
