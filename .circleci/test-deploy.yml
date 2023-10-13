@@ -18,10 +18,11 @@ release-filters: &release-filters
 jobs:
   command-test:
     docker:
-      - image: cimg/base:current
+      - image: cimg/node:current
     steps:
       - checkout
-      - yarn_install
+      - react-native/yarn_install
+
 workflows:
   test-deploy:
     jobs:
