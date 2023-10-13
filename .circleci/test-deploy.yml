@@ -1,0 +1,44 @@
+version: 2.1
+orbs:
+  orb-tools: circleci/orb-tools@12.0
+  # The orb definition is intentionally not included here. It will be injected into the pipeline.
+  rn: {}
+
+filters: &filters
+  tags:
+    only: /.*/
+
+# Filter for release tags.
+release-filters: &release-filters
+  branches:
+    ignore: /.*/
+  tags:
+    only: /^v[0-9]+\.[0-9]+\.[0-9]+$/
+
+jobs:
+  command-test:
+    docker:
+      - image: cimg/base:current
+    steps:
+      - checkout
+      # Run your orb's commands to validate them.
+      - rn/yarn_install
+
+workflows:
+  test-deploy:
+    jobs:
+      - command-test:
+          filters: *filters
+
+      - orb-tools/pack:
+          filters: *release-filters
+
+      - orb-tools/publish:
+          orb_name: react-native-community/react-native
+          vcs_type: << pipeline.project.type >>
+          pub_type: production
+          requires:
+            - orb-tools/pack
+            - command-test
+          context: orb-publishing
+          filters: *release-filters
