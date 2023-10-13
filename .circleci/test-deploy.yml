@@ -2,7 +2,7 @@ version: 2.1
 orbs:
   orb-tools: circleci/orb-tools@12.0
   # The orb definition is intentionally not included here. It will be injected into the pipeline.
-  <orb-name>: {}
+  react-native: {}
 
 filters: &filters
   tags:
