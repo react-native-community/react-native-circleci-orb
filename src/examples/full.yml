@@ -10,7 +10,7 @@ usage:
   # Custom jobs which are not part of the Orb
   jobs:
     checkout_code:
-      executor: 
+      executor:
         name: rn/linux_js
         node_version: '16'
       steps:
