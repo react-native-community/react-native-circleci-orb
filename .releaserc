@@ -9,14 +9,6 @@
         "npmPublish": false
       }
     ],
-    [
-      "semantic-release-circleci-orb",
-      {
-        "commandName": "/home/circleci/circleci",
-        "orbName": "react-native-community/react-native",
-        "orbPath": "packed-orb.yml"
-      }
-    ],
     "@semantic-release/github",
     [
       "@semantic-release/git",
