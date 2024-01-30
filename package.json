@@ -4,14 +4,12 @@
   "private": true,
   "description": "A CircleCI Orb which can be used to simplify building and testing React Native apps.",
   "scripts": {
-    "pack": "./scripts/pack.sh",
     "semantic-release": "semantic-release"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/git": "^9.0.0",
-    "semantic-release": "^17.4.2",
-    "semantic-release-circleci-orb": "^1.1.1"
+    "semantic-release": "^17.4.2"
   },
   "repository": {
     "type": "git",
