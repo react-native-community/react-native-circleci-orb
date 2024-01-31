@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   orb-tools: circleci/orb-tools@12.0
+  node: circleci/node@5.2.0
   # The orb definition is intentionally not included here. It will be injected into the pipeline.
   react-native: {}
 
@@ -28,6 +29,16 @@ workflows:
     jobs:
       - command-test:
           filters: *filters
+
+      - node/run:
+          yarn-run: semantic-release
+          version: "20.11"
+          pkg-manager: yarn
+          requires:
+            - command-test
+          filters:
+            branches:
+              only: master
 
       - orb-tools/pack:
           filters: *release-filters
