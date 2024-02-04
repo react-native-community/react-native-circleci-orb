@@ -145,5 +145,5 @@ This is what the final workflow will look like:
 ## License
 The Orb is released under the MIT license. For more information see [`LICENSE`](https://github.com/react-native-community/react-native-circleci-orb/blob/master/LICENSE).
 
-[orb-version-badge]:https://img.shields.io/endpoint.svg?url=https://badges.circleci.io/orb/react-native-community/react-native&style=flat-square
+[orb-version-badge]:https://badges.circleci.com/orbs/react-native-community/react-native.svg
 [orb-page]:https://circleci.com/orbs/registry/orb/react-native-community/react-native
