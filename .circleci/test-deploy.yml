@@ -38,7 +38,7 @@ workflows:
             - command-test
           filters:
             branches:
-              only: master
+              only: main
 
       - orb-tools/pack:
           filters: *release-filters
