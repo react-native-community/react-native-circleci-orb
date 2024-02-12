@@ -1,3 +1,10 @@
+# [7.4.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v7.3.0...v7.4.0) (2024-02-12)
+
+
+### Features
+
+* support a custom pod install command ([d15769f](https://github.com/react-native-community/react-native-circleci-orb/commit/d15769f))
+
 # [7.3.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v7.2.0...v7.3.0) (2023-07-12)
 
 
