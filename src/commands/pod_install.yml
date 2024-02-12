@@ -9,6 +9,10 @@ parameters:
     type: string
     default: "ios"
     description: The location of the "ios" directory
+  pod_install_command:
+    type: string
+    default: "pod install"
+    description: The command to run to install pods
   cache:
     description: Save and restore the cache? Defaults to true
     type: boolean
@@ -25,7 +29,7 @@ steps:
   - run:
       name: Install CocoaPods
       command: |
-        cd <<parameters.pod_install_directory>> && pod install && cd -
+        cd <<parameters.pod_install_directory>> && eval <<parameters.pod_install_command>> && cd -
   - when:
       condition: <<parameters.cache>>
       steps:
