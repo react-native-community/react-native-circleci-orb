@@ -84,7 +84,7 @@ parameters:
     type: string
     default: "12.5.1"
   resource_class:
-    description: You can use whatever resource class your plan has access to. See https://circleci.com/docs/configuration-reference/#resourceclass
+    description: You can use whatever resource class your plan has access to. See https://circleci.com/docs/using-macos/#available-resource-classes
     type: string
     default: medium
 
