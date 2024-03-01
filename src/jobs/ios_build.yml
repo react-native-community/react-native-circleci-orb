@@ -86,7 +86,7 @@ parameters:
   resource_class:
     description: You can use whatever resource class your plan has access to. See https://circleci.com/docs/using-macos/#available-resource-classes
     type: string
-    default: medium
+    default: macos.x86.medium.gen2
 
 executor:
   name: macos
