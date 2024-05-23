@@ -1,3 +1,18 @@
+# [8.0.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v7.4.0...v8.0.0) (2024-05-23)
+
+
+### Bug Fixes
+
+* remove _JAVA_OPTIONS parameter & environment (closes [#171](https://github.com/react-native-community/react-native-circleci-orb/issues/171)) ([d737af9](https://github.com/react-native-community/react-native-circleci-orb/commit/d737af9))
+
+
+* Merge pull request #172 from devnev/no-java-options-env ([a7d373e](https://github.com/react-native-community/react-native-circleci-orb/commit/a7d373e)), closes [#172](https://github.com/react-native-community/react-native-circleci-orb/issues/172)
+
+
+### BREAKING CHANGES
+
+* The java_options parameter has been removed. Specify your JVM options in the gradle.properties file or in the gradle_options with -Dorg.gradle.jvmargs= instead.
+
 # [7.4.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v7.3.0...v7.4.0) (2024-02-12)
 
 
