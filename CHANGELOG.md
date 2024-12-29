@@ -1,3 +1,10 @@
+## [8.0.1](https://github.com/react-native-community/react-native-circleci-orb/compare/v8.0.0...v8.0.1) (2024-12-29)
+
+
+### Bug Fixes
+
+* remove pod_install command cache fallback ([06b0432](https://github.com/react-native-community/react-native-circleci-orb/commit/06b0432))
+
 # [8.0.0](https://github.com/react-native-community/react-native-circleci-orb/compare/v7.4.0...v8.0.0) (2024-05-23)
 
 
