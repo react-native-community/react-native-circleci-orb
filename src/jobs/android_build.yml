@@ -39,6 +39,10 @@ parameters:
     description: The build type to build. This is normally either "debug" or "release" but you may have custom build types configured for your app.
     type: string
     default: "debug"
+  test_build_type:
+    description: The test build type to build. This is normally either "debug" or "release" but you may have custom build types configured for your app.
+    type: string
+    default: "debug"
   build_cache:
     description: Should we cache after Gradle build? Defaults to true
     type: boolean
@@ -87,6 +91,7 @@ steps:
   - android_build:
       project_path: <<parameters.project_path>>
       build_type: <<parameters.build_type>>
+      test_build_type: <<parameters.test_build_type>>
       cache: <<parameters.build_cache>>
       assemble_android_test: <<parameters.assemble_android_test>>
   - when:
