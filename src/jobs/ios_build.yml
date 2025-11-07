@@ -58,9 +58,11 @@ parameters:
   device_id:
     description: UUID of device you want to build for.
     type: string
+    default: ""
   device_os:
     description: OS of device you want to build for, e.g 18.5.
     type: string
+    default: ""
   scheme:
     description: The scheme to use.
     type: string

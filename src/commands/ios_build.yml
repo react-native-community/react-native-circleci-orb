@@ -24,9 +24,11 @@ parameters:
   device_id:
     description: UUID of device you want to build for.
     type: string
+    default: ""
   device_os:
     description: OS of device you want to build for, e.g 18.5.
     type: string
+    default: ""
   scheme:
     description: The scheme to use.
     type: string
@@ -48,10 +50,10 @@ steps:
       name: Build iOS App
       command: |
         DESTINATION="platform=iOS Simulator,name=<<parameters.device>>"
-        if [ -n "<<parameters.device_id>>" ]; then
+        if [ "<<parameters.device_id>>" != "" ]; then
           DESTINATION="${DESTINATION},id=<<parameters.device_id>>"
         fi
-        if [ -n "<<parameters.device_os>>" ]; then
+        if [ "<<parameters.device_os>>" != "" ]; then
           DESTINATION="${DESTINATION},OS=<<parameters.device_os>>"
         fi
         export RCT_NO_LAUNCH_PACKAGER=true
