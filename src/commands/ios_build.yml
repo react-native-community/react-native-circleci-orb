@@ -18,9 +18,15 @@ parameters:
     type: string
     default: "ios/build"
   device:
-    description: The type of device you want to build for.
+    description: The name of device you want to build for.
     type: string
     default: "iPhone 11"
+  device_id:
+    description: UUID of device you want to build for.
+    type: string
+  device_os:
+    description: OS of device you want to build for, e.g 18.5.
+    type: string
   scheme:
     description: The scheme to use.
     type: string
@@ -40,7 +46,16 @@ steps:
 
   - run:
       name: Build iOS App
-      command: "export RCT_NO_LAUNCH_PACKAGER=true && xcodebuild -<<parameters.project_type>> <<parameters.project_path>> -destination 'platform=iOS Simulator,name=<<parameters.device>>' -scheme '<<parameters.scheme>>' -parallelizeTargets -configuration <<parameters.build_configuration>> -derivedDataPath <<parameters.derived_data_path>>  -UseModernBuildSystem=YES | xcpretty -k"
+      command: |
+        DESTINATION="platform=iOS Simulator,name=<<parameters.device>>"
+        if [ -n "<<parameters.device_id>>" ]; then
+          DESTINATION="${DESTINATION},id=<<parameters.device_id>>"
+        fi
+        if [ -n "<<parameters.device_os>>" ]; then
+          DESTINATION="${DESTINATION},OS=<<parameters.device_os>>"
+        fi
+        export RCT_NO_LAUNCH_PACKAGER=true
+        xcodebuild -<<parameters.project_type>> <<parameters.project_path>> -destination "${DESTINATION}" -scheme '<<parameters.scheme>>' -parallelizeTargets -configuration <<parameters.build_configuration>> -derivedDataPath <<parameters.derived_data_path>> -UseModernBuildSystem=YES | xcpretty -k
 
   - when:
       condition: <<parameters.cache>>
