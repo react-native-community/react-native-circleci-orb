@@ -55,6 +55,14 @@ parameters:
     description: The type of device you want to build for.
     type: string
     default: "iPhone 11"
+  device_id:
+    description: UUID of device you want to build for.
+    type: string
+    default: ""
+  device_os:
+    description: OS of device you want to build for, e.g 18.5.
+    type: string
+    default: ""
   scheme:
     description: The scheme to use.
     type: string
@@ -132,6 +140,8 @@ steps:
       project_path: <<parameters.project_path>>
       derived_data_path: <<parameters.derived_data_path>>
       device: <<parameters.device>>
+      device_id: <<parameters.device_id>>
+      device_os: <<parameters.device_os>>
       build_configuration: <<parameters.build_configuration>>
       scheme: <<parameters.scheme>>
       project_type: <<parameters.project_type>>
