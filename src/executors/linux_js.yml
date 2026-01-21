@@ -4,7 +4,7 @@ parameters:
     type: string
     default: '16.15'
   resource_class:
-    description: Changes the resource class of the executor. Requires a support request to enable the resource_class parameter. See https://circleci.com/docs/2.0/configuration-reference/#resource_class
+    description: You can use whatever resource class your plan has access to. See https://circleci.com/docs/configuration-reference/#resourceclass
     type: string
     default: medium
 docker:
