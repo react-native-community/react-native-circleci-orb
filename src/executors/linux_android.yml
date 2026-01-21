@@ -2,7 +2,7 @@ parameters:
   gradle_options:
     description: Gradle command options. Note that setting this will override the default options so you might need to supply those as well.
     type: string
-    default: '-Xmx2014m -Dorg.gradle.daemon=false -Dorg.gradle.jvmargs="-XX:+UnlockExperimentalVMOptions -XX:+HeapDumpOnOutOfMemoryError"'
+    default: '-Xmx2014m -Dorg.gradle.daemon=false'
   build_image_version:
     description: React Native Android build image version. For available veresions, see https://hub.docker.com/r/reactnativecommunity/react-native-android/tags
     type: string
